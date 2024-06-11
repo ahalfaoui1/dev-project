@@ -1,0 +1,210 @@
+<div class="d-flex justify-content-between align-items-center pb-0 mt-2 text-center">
+
+    <p class="date-note mt-3"><strong>24 janvier</strong></p>
+
+    <button class="btn btn-colorbtn22 px-3 py-2" data-toggle="modal" data-target="#noteModal">Ajouter un note</button>
+    <div class="modal fade " id="noteModal" tabindex="-1" role="dialog" aria-labelledby="noteModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered p-3" role="document">
+            <div class="modal-content modal-back  py-2">
+                
+                <div class="modal-header ">
+                    <h5 class="modal-title " id="composeEmailModalLabel">Ajouter un Notes</h5>
+                    <button type="button" class="close" data-dismiss="modal" (click)="closeModal()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <hr>
+                <div class="modal-body">
+                    <!-- Your email composition form can go here -->
+                    <form id="contactForm" (ngSubmit)="submitNoteContact(id, formData)"  enctype="multipart/form-data">
+ 
+                        <div class="form-group">
+                            <textarea [(ngModel)]="formData.description" contenteditable="true"  class="form-control" id="description"  name="description" placeholder="votre commentaire"
+                                rows="7"></textarea>
+                            <!-- <div id="emailToolbar" class="barrejoint text-left ">
+                                <button type="button" class="btn"
+                                    onclick="document.execCommand('bold', false, null)"><strong>B</strong></button>
+                                <button type="button" class="btn"
+                                    onclick="document.execCommand('italic', false, null)"><em>I</em></button>
+                                <button type="button" class="btn barrejoin"
+                                    onclick="document.execCommand('underline', false, null)"><u>U</u></button>
+
+
+                                    <button type="button" class="btn" onclick="attachFile()"><i
+                                        class="fa-regular fa-file"></i></button>
+                                <button type="button" class="btn" onclick="attachPhoto()"><i
+                                        class="fa-regular fa-image"></i></button>
+                            </div> -->
+                        </div>
+                        
+                    </form>
+                </div>
+               
+                <div class="modal-footer text-center">
+                    <button type="submit" class="btn  px-4 py-2  btn-colorbtn2 text-center mx-auto" data-target="#noteModal" (click)="submitNoteContact(id, formData)"  >Ajouter note</button>
+                    <!-- <button type="reset" class="btn btn-colorbtn" (click)="closeModal()" data-dismiss="modal">Annuler</button> -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<hr class="line-notes ">
+<div class="col-back  mt-3 "  *ngFor="let note of note_Entreprise ; let i = index">
+    <div class="px-3 py-1">
+        <div class="d-flex justify-content-between align-items-center pt-3 text-center">
+            <div class="align-items-center">
+                <p class="date-note align-items-center mb-0">{{note.description}} </p>
+            </div>
+            <div>
+                <button class="btn btn-colorbtn3 px-4">{{note.dateCreated}} </button>
+
+                <a class="px-2 py-0 btn-delete" (click)="openDelModal(deletenote)" >
+                    <img src="./assets/octicon_trashcan-16.png"  class="img-fluid" alt="">
+                </a>
+
+                
+                <div class="modal-body fade" id="deleteModal" tabindex="-1" role="dialog"
+                aria-labelledby="composeEmailModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered px-4" role="document">
+                  <div class="modal-content modal-back ">
+                    <ng-template #deletenote>
+                      <div class="modal-header ">
+                        <h5 class="modal-title" id="composeEmailModalLabel">Supprimer note </h5>
+                        <button type="button" class="close" (click)="closeModal()">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <hr>
+                      <div class="modal-bbody py-0">
+                        <form id="contactForm" (ngSubmit)="deleteNote(i)" enctype="multipart/form-data">
+
+                          <div class="row d-flex">
+                            <label for="delete" class="ss" >Voulez Vous Supprimer </label>
+                          </div>
+                          <div class="modal-footer d-flex justify-content-center">
+                            <button type="button" class="btn btn-bcolorbtn" (click)="closeModal()">back</button>
+                            <button type="submit" class="btn btn-dcolorbtn btn-addcolor">delete note</button>
+                          </div>
+
+                        </form>
+                      </div>
+                    </ng-template>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- <div class="row d-flex">
+                    <label for="delete">Voulez Vous Supprimer </label>
+                  </div>
+                  <div class="modal-footer d-flex justify-content-center">
+                    <button type="button" class="btn btn-colorbtn" (click)="closeModal()">Annuler</button>
+                    <button type="submit" class="btn btn-colorbtn btn-addcolor">Supprimer note</button>
+                  </div> -->
+                <!-- <button (click)="deleteItem()" class="btn-delete">
+                    <i class="fas fa-trash"></i> Supprimer
+                  </button>
+                <button   (click)="deleteNote(i)">supp </button>
+
+                {{note._links.note.href}} -->
+                
+            </div>
+        </div>
+
+
+        <button class="btn btn-comment-add  py-2 mt-3 mb-4 w-100" data-toggle="modal"
+            data-target="#commentsModal">Ajouter Commentaire</button>
+
+        <div class="modal fade " id="commentsModal" tabindex="-1" role="dialog" aria-labelledby="commentsModal"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered " role="document">
+                <div class="modal-content modal-back px-3 py-1">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="composeEmailModalLabel">Ajouter commentaire </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <hr>
+                    <div class="modal-body   px-2 py-0 ">
+                        <!-- Your email composition form can go here -->
+
+                        <div class="form-group ">
+
+                            <textarea contenteditable="true"  class="form-control" id="emailContent"
+                                rows="7">Tapez Votre Commentaire</textarea>
+                            <!-- <div id="emailToolbar" class="barrejoint  p-0 ">
+                                <button type="button" class="btn"
+                                    onclick="document.execCommand('bold', false, null)"><strong>B</strong></button>
+                                <button type="button" class="btn"
+                                    onclick="document.execCommand('italic', false, null)"><em>I</em></button>
+                                <button type="button" class="btn barrejoin"
+                                    onclick="document.execCommand('underline', false, null)"><u>U</u></button> -->
+
+                                <!-- New buttons for Joint File and Joint Photo -->
+                                <!-- <button type="button" class="btn" onclick="attachFile()"><i
+                                        class="fa-regular fa-file"></i></button>
+                                <button type="button" class="btn" onclick="attachPhoto()"><i
+                                        class="fa-regular fa-image"></i></button>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="modal-footer text-center">
+                        <button type="button" class="btn  px-4 py-2 btn-colorbtn2 text-center mx-auto">Ajouter
+                            commentaire </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- <div class="backoverview">
+        <div class="container-fluid">
+            <div class=" py-2 ">
+                <table class="table">
+                    <thead>
+                        <tr>
+    
+                            <th scope="col">Desscription</th>
+                            <th scope="col">Date crée</th>
+                            <th scope="col">Date modifier</th>
+                            <th scope="col">Date supprimer</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let note of note_Entreprise">
+                        <tr>
+    
+                            <td>
+                                <div class="d-flex justify-content-between">
+                                    <div> {{note.description}} </div>
+                                </div>
+                            </td>
+                            <td>{{note.dateCreated}}</td>
+                            <td>{{note.dateUpdated}}</td>
+                            <td>{{note.dateDeletedAt}}</td>
+                        </tr>
+    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div> -->
+
+</div>
+

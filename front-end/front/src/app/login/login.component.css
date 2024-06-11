@@ -1,0 +1,157 @@
+
+
+.container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: transparent; 
+}
+
+
+
+
+
+
+
+body {
+    background: transparent;
+}
+.btn-hidden{
+    background-color: rgba(71, 93, 117, 0.1) !important;
+ border-radius: 50px;
+}
+
+.wrapper {
+  
+       /*  width: calc(100% / 2) !important;*/
+    width: 450px;
+    min-height: 300px;
+    margin: 100px auto;
+    padding: 4px 5px 5px 5px;
+    border-radius: 15px;
+    background-color: rgba(246, 250, 253, 0.54);
+    border-radius: 50px; 
+   
+}
+button{
+  background-color: #475D75;
+  align-content: center;
+}
+.logo {
+  background-color: #475D75;
+   border-radius: 20px;
+}
+hr{
+    border: 1px solid #666;
+}
+
+.logo img {
+    width: 60%;
+    justify-content:center;}
+
+.wrapper .name {
+    font-weight: 600;
+    font-size: 1.4rem;
+    letter-spacing: 1.3px;
+    padding-left: 10px;
+    color: #475D75;
+}
+.input-group{
+  flex-wrap: inherit;
+
+}
+.wrapper .form-field input {
+    width: 100%;
+    display: block;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    background-color: rgba(71, 93, 117, 0.1) !important;
+    color: #666 !important;
+    padding: 10px;
+    border: 0% !important;
+}
+.align-me{
+    height: -50px important;
+}
+.wrapper .form-field {
+   
+  color: #666 !important; 
+    margin-bottom: 20px;
+   
+    
+}
+.lebel-text{
+    font-size: 12px;
+    font-weight: 400;
+    padding-left: 5%;
+    line-height: 120%;
+    letter-spacing: -3%;
+    color: #475D75;
+    font-family: 'Manrope';
+}
+.wrapper .form-field .fas {
+    color: #555;
+}
+
+.custom-checkbox {
+  display: inline-block;
+  
+  
+  cursor: pointer;
+  font-size: 13px;
+  color: #1FA3D4;
+}
+.input-lign{
+  /*  height: 41px;*/
+}
+
+.lebelpwd-text{
+  
+    font-family: 'Manrope'; /* Assuming 'manrope' is your desired font family */
+  font-size: 12px; /* Font size in pixels */
+  line-height: 120%; /* Line height as a percentage of the font size */
+  text-align: left; /* Text alignment to the left */
+ 
+  color: #475D75; /* Text color in hexadecimal */
+  padding-left: 3%;
+  font-weight: 400; 
+}
+.wrapper .login-button {
+    box-shadow: none;
+    align-content:baseline;
+    font-size: 14px; 
+    font-family: 'Manrope';
+    line-height: 120%;
+    letter-spacing: -3%;
+    background-color: #475D75;
+    color: #F6FAFD;
+    border-radius: 50px;
+   
+    letter-spacing: 1.3px;
+}
+
+
+
+.wrapper a {
+    text-decoration: none;
+    font-size: 0.8rem;
+    color: #03A9F4;
+}
+
+.wrapper a:hover {
+    color: #039BE5;
+}
+
+
+@media(max-width: 380px) {
+    .wrapper {
+        margin: 30px 20px;
+        padding: 40px 15px 15px 15px;
+    }
+}

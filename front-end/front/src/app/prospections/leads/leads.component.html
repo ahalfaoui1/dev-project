@@ -1,0 +1,210 @@
+<div class="container-fluid px-0 ">
+    <div class="row   mb-3  ">
+        <div class="col w-100 ">
+            <div class="btn-group show">
+                <a class="btn btn-sm btn-circledown  dropdown-toggle custom-dropdown-toggle" href="#" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    &nbsp;Propriétaire de contact <i class="fa-sharp fa-solid fa-chevron-down"></i> &nbsp;
+                </a>
+                <div class="dropdown-menu custom-dropdown-menu align-items-center">
+                    <a class="dropdown-item">Défaut</a>
+                    <a class="dropdown-item inter-col">Les nouveaux d'abord</a>
+                    <a class="dropdown-item">Les anciens d'abord</a>
+                </div>
+            </div>
+        </div>
+        <div class="col   w-100 ">
+            <div class="btn-group ">
+                <a class="btn btn-sm btn-circledown dropdown-toggle custom-dropdown-toggle" href="#" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    &nbsp; Date de création <i class="fa-sharp fa-solid fa-chevron-down"></i> &nbsp;
+                </a>
+                <div class="dropdown-menu custom-dropdown-menu align-items-center">
+                    <a class="dropdown-item" href="#">Défaut </a>
+                    <a class="dropdown-item inter-col" href="#">Les nouveaux d'abord</a>
+                    <a class="dropdown-item" href="#">Les anciens d'abord</a>
+                </div>
+            </div>
+        </div>
+        <div class="col   w-100 ">
+            <div class="btn-group ">
+                <a class="btn btn-sm btn-circledown dropdown-toggle custom-dropdown-toggle" href="#" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    &nbsp;Date la dernière activité <i class="fa-sharp fa-solid fa-chevron-down"></i> &nbsp;
+                </a>
+                <div class="dropdown-menu custom-dropdown-menu align-items-center">
+                    <a class="dropdown-item" href="#">Défaut </a>
+                    <a class="dropdown-item inter-col" href="#">Les nouveaux d'abord</a>
+                    <a class="dropdown-item" href="#">Les anciens d'abord</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col  w-100">
+            <div class="btn-group ">
+                <a class="btn btn-sm btn-circledown dropdown-toggle custom-dropdown-toggle"
+                    (onload)="onStatusContact('')" role="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    &nbsp; Statut de Contact <i class="fa-sharp fa-solid fa-chevron-down"></i> &nbsp;
+                </a>
+                <div class="dropdown-menu custom-dropdown-menu align-items-center">
+                    <a class="dropdown-item" (click)="onStatusContact('Contact')">Contact</a>
+                    <a class="dropdown-item inter-col" (click)="onStatusContact('Non Contact')">Non Contact</a>
+                </div>
+            </div>
+        </div>
+        <div class="col   px-0  w-100 ">
+            <div class="btn-group ">
+                <div class=" has-search  w-100">
+                    <span class="fa fa-search form-control-feedback "></span>
+                    <input type="text"
+                        class=" form-control search_input btn-circledown dropdown-toggle custom-dropdown-toggle"
+                        id="search" name="search" (input)="onSearch($event)" placeholder="recherche de Contact">
+                </div>
+            </div>
+        </div>
+        <div class="col   px-0  w-100  ">
+            <div class="btn-group ">
+                <div class=" has-search  w-100">
+                    <button class="btn  btn-circle  py-2 ml-4 btn-color">
+                        <i class="fa-solid fa-plus"></i> Ajouter Contact
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<div class="row">
+    <ng-container *ngFor="let Contact of Contacts">
+
+        <div class="col-3 col-6 col-lg-4 col-xl-3  px-1 mb-2 contactdetails">
+
+            <div class="card px-0 py-2">
+                <div class="card-body  py-2 ">
+                    <div class="d-flex align-items-center  ">
+                        <div class=" text-center align-items-center  " style="width: 40%;">
+
+                            <img *ngIf="Contact.photo !== null" [src]="'data:image/*;base64,' +Contact.photo"
+                                alt="User Image" class="card-img-top img-fluid rounded-circle"
+                                style="object-fit: initial; object-position: center center; width: 65%; height: 65%;">
+
+                            <img *ngIf="Contact.photo == null"
+                                src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAxL3JtNjA5LXNvbGlkaWNvbi13LTAwMi1wLnBuZw.png"
+                                alt="User Image" class="card-img-top img-fluid rounded-circle"
+                                style="object-fit: initial; object-position: center center; width: 65%; height: 65%;">
+
+                        </div>
+                        <div class="align-items-center px-1  " style="width: 60%;">
+                            <div class="d-flex justify-content-between">
+                                <h4 class="card-title mb-2 " style="color: brown;" [routerLink]="['/contact/details', Contact.id]">{{
+                                    Contact.firstName }}
+                                    <br> {{ Contact.lastName }}
+                                </h4>
+                                <!--   
+                            <button (click)="deleteContact(Contact.id)" class="  px-2  btn-trash" >
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                               -->
+                                <a class=" px-2 py-0 btn-delete" (click)="openDelModal(deletecontact)">
+                                    <img src="./assets/octicon_trashcan-16.png" class="img-fluid" alt="">
+                                    <!--<i class="fa-solid fa-trash"></i>-->
+                                </a>
+
+
+                                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+                                    aria-labelledby="composeEmailModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered px-4" role="document">
+                                        <div class="modal-content modal-back ">
+                                            <ng-template #deletecontact>
+                                                <div class="modal-header ">
+                                                    <h5 class="modal-title" id="composeEmailModalLabel">Supprimer
+                                                        Contact </h5>
+                                                    <button type="button" class="close" (click)="closeModal()">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <hr>
+                                                <div class="modal-body py-0">
+                                                    <form id="contactForm" (ngSubmit)="deleteContact(Contact.id)"
+                                                        enctype="multipart/form-data">
+
+                                                        <div class="row d-flex">
+                                                            <label for="delete">Voulez Vous Supprimer {{ Contact.nom
+                                                                }}</label>
+                                                        </div>
+                                                        <div class="modal-footer d-flex justify-content-center">
+                                                            <button type="button" class="btn btn-colorbtn"
+                                                                (click)="closeModal()">Annuler</button>
+                                                            <button type="submit"
+                                                                class="btn btn-colorbtn btn-addcolor">Supprimer
+                                                                Contact</button>
+                                                        </div>
+
+                                                    </form>
+                                                </div>
+                                            </ng-template>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <a href="#" class="client-circledown px-2   py-1 "> {{ Contact.status }} </a>
+                            <p class="card-text mt-2 " style="font-size: 11px;">Description/informations complémentaires
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="line">
+                <div class="d-flex justify-content-between px-4  mt-2">
+                    <p class="mb-0 footer-card">Dernier Compte</p>
+                    <p class="mb-0 footer-card">{{ Contact.dateCreated | date:'yyyy-MM-dd' }}</p>
+                </div>
+            </div>
+        </div>
+
+    </ng-container>
+</div>
+
+
+<div class=" mt-2 px-0 d-flex justify-content-between    ">
+    <!-- Reset Filters button -->
+    <div class=" ">
+        <button class="btn p  btn-primary  reset-button py-2" (click)="resetFilters()">Réinitialiser tous les
+            filtres</button>
+    </div>
+    <!-- Additional content or controls -->
+    <div class="px-0">
+        <ul class="pagination  ">
+            <li class="page-item" *ngIf="currentPage > 0">
+                <a class="page-link  page-btn" (click)="onPreviousNextPage(currentPage-1)">
+                    <span aria-hidden="true">&laquo; Précédent</span>
+                </a>
+            </li>
+
+            <ng-container *ngIf="totalPages !== undefined; else noPages">
+                <li class="page-item" *ngFor="let page of pagesArray()">
+                    <a class="page-link   page-btn  " (click)="onPageChange(page-1)"
+                        [class.active]=" currentPage === page-1">{{ page }}</a>
+                </li>
+            </ng-container>
+
+            <ng-template #noPages>
+                <li class="page-item">
+                    <span class="page-link page-btn  " style="cursor: not-allowed;">...</span>
+                </li>
+            </ng-template>
+
+            <li class="page-item " *ngIf="currentPage < totalPages - 1">
+                <a class="page-link  page-btn" (click)="onPreviousNextPage(currentPage + 1)">
+                    <span aria-hidden="true">Suivant &raquo;</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+
+</div>

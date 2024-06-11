@@ -1,0 +1,252 @@
+<div class="container-fluid pt-3 mb-4 ">
+
+    
+ 
+
+  
+
+  <div class="container-fluid  ">
+    <div class="d-flex justify-content-between mb-2">
+        <button class="btn btn-colorcontact px-4 mt-4 mb-3" routerLink="/contacts" ><i class="fa-solid fa-angle-left" style="color: black !important;"></i> &nbsp; &nbsp;contact</button>
+  
+       <!-- <div class="d-flex justify-content-end">
+            <div class="input-group search_container">
+                <input class="form-control search_input" type="text" name="" placeholder="Search...">
+                <div class="input-group-append">
+                    <span class="input-group-text search_icon"><i class="fas fa-search"></i></span>
+                </div>
+            </div>
+        </div>-->
+    </div>
+    <div class="row">
+
+        <div  *ngIf="contact" class="dd col-lg-4 col1 pt-4 pl-4"  style="overflow-y: auto; overflow-x: 0;">
+            
+            <div class=" px-0  pt-1 ">
+                <div class="  mb-4 profile-pic border">
+                    <label class="-label" for="image">
+                      <span class=" glyphicon glyphicon-camera "></span>
+                      <span><i class="fa-solid fa-camera"></i></span> 
+                    </label>
+                  
+                    <input id="image" name="image" type="file" accept="image/*" (change)="onFileChange($event)" required />
+                  
+                    <img *ngIf="contact.photo !== null" 
+                         [src]="'data:image/*;base64,' + contact.photo"
+                         alt="User Image"
+                         class="card-img-top img-fluid"
+                         style="width: 80px; height: 80px; border-radius: 10px;">
+                  
+                    <img *ngIf="contact.photo == null"
+                         src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAxL3JtNjA5LXNvbGlkaWNvbi13LTAwMi1wLnBuZw.png"
+                         alt="User Image"
+                         class="card-img-top img-fluid"
+                         style="width: 80px; height: 80px; border-radius: 10px;">
+                  </div>
+                  
+                <div class="  px-1 mt-2 align-items-center justify-content-start">
+                    <p class="title-contact mt-3"> {{ contact.firstName }} {{ contact.lastName }}</p>
+                 <!-- <p>{{ contact.statuscontact }} </p>-->
+                </div>
+                
+            </div>
+
+
+            
+           
+
+          
+          
+            <div class="d-flex gap-2 ">
+                <button type="button" class="btn px-4  btn-color btn-square" (click)="showComponent('notes')">
+                  <i class="fas fa-note-sticky font-icon"></i> Notes
+                </button>
+              
+                <button type="button" class="btn  px-4 btn-color btn-square" (click)="showComponent('email')">
+                  <i class="fas fa-envelope font-icon"></i> Email
+                </button>
+
+              
+                <button type="button" class="btn  px-4 btn-color btn-square" (click)="showComponent('tasks')">
+                  <i class="fas fa-bars font-icon"></i> Tâches
+                </button>
+              
+                <button type="button" class="btn  px-4 btn-color btn-square" (click)="showComponent('meeting')">
+                  <i class="far fa-calendar-days font-icon"></i> Réunion
+                </button>
+              </div>
+            
+
+            <br>
+
+            
+
+            
+            <div  *ngIf="contact" lass="px-0  text-truncate">
+
+
+                <div class="d-flex align-items-center">
+                    <p class="label-details">Details client:</p>
+                    <p class="ml-auto justify-content-end  mr-3 ">
+                        <img src="./assets/edit.png" alt="" class="img-fluid">
+                      <!--<i class="fas fa-pen-to-square"></i> -->  
+                    </p>
+                </div>
+                
+                <div class="  row   align-items-center ">
+                    <div class="  col-lg-5">
+                        <p class="pad-row1 " >Email:</p>
+                    </div>
+                    <div class="col-lg-7  ">
+                        <p  class="pad-rowmail ">{{ contact.email }} </p>
+                    </div>
+                </div>
+
+
+
+                <div class=" row  align-items-center">
+                    <div class="  col-lg-5">
+                        <p class="pad-row1">Numéro de téléphone:</p>
+                    </div>
+                    <div class="col-lg-7 ">
+                        <p  class="pad-rowmail " >{{ contact.tel}}</p>
+                    </div>
+                </div>
+                <div class="  row align-items-center ">
+                    <div class="col-lg-5">
+                        <p class="pad-row1">Linkedin:</p>
+                    </div>
+                    <div class=" col-lg-7 ">
+                        <p class="pad-rowmail ">   Profile Linkedin </p>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="   row  align-items-center ">
+                    <div class="   col-md-5">
+                        <p class="pad-row1">Propritaire de contact:</p>
+                    </div>
+                    <div class="col-md-7  ">
+                        <p class="pad-row " >{{ contact.firstName }}  {{ contact.lastName }}</p>
+                    </div>
+                </div>
+                <div class="  row  align-items-center ">
+                    <div class=" col-lg-5">
+                        <p class="pad-row1" >Compte  de contact:</p>
+                    </div>
+                    <div class="col-lg-7 ">
+                        <p class="pad-row ">
+                            {{ contact.contactOwner.role.name }}
+                        </p>
+                    </div>
+                </div>
+                <div class="  row  align-items-center ">
+                    <div class=" col-lg-5">
+                        <p class="pad-row1">Date  de contact:</p>
+                    </div>
+                    <div class="col-lg-7 ">
+                        <p class="pad-row ">
+                            {{ contact.dateCreated | date:'yyyy-MM-dd' }}                   
+                        </p>
+                    </div>
+                </div>
+                <div class="  row  align-items-center ">
+                    <div class="  col-lg-5">
+                        <p class="pad-row1" >Phase de cycle de vie:</p>
+                    </div>
+                    <div class="col-lg-7 ">
+                        <p class="pad-row ">
+                            <!-- {{ contact.phasecyclevie}} -->
+                            PHASE CYCLE VIE
+                        </p>
+                    </div>
+                </div>
+                <div class="  row  align-items-center ">
+                    <div class="  col-lg-5">
+                        <p  class="pad-row1">Intitule de Poste:</p>
+                    </div>
+                    <div class="col-lg-7 ">
+                        <p class="pad-row ">{{ contact.jobTitle}}</p>
+                    </div>
+                </div>
+             
+                
+                <div class="  row  align-items-center ">
+                    <div class="  col-lg-5">
+                        <p class="pad-row1">Type de contact:</p>
+                    </div>
+                    <div class="col-lg-7 ">
+                        <p class="pad-row ">{{ contact.type}}</p>
+                    </div>
+                </div>
+                <div class="  row  align-items-center ">
+                    <div class="  col-lg-5">
+                        <p class="pad-row1" >Nom d'entreprise:</p>
+                    </div>
+                    <div class="col-lg-7 ">
+                        <p class="pad-row ">{{ contact.companyName}}</p>
+                    </div>
+                </div>
+                
+                <div class="  row  align-items-center ">
+                    <div class="  col-lg-5">
+                        <p class="pad-row1">Satuts du contacter:</p>
+                    </div>
+                    <div class="col-lg-7 ">
+                        <p class="pad-row ">{{ contact.status}}</p>
+                    </div>
+                </div>
+                
+             
+            </div>
+         
+        </div>
+
+        <div class="col-lg-8 col2 pt-4 " style="overflow-y: auto;">
+            <div class="d-flex ml-2">
+                <button class="btn btn-sm btn-colorbtn px-sm-4 mr-2" 
+                        [class.active]="selectedComponent === 'notes'" 
+                        (click)="showComponent('notes')">Notes</button>
+            
+                <button class="btn btn-colorbtn btn-sm px-sm-4 mr-2" 
+                        [class.active]="selectedComponent === 'email'" 
+                        (click)="showComponent('email')">Email</button>
+            
+                <button class="btn btn-sm btn-colorbtn px-sm-4" 
+                        [class.active]="selectedComponent === 'tasks'" 
+                        (click)="showComponent('tasks')">Tache</button>
+            
+                <button class="btn btn-sm px-sm-4 btn-colorbtn ml-2" 
+                        [class.active]="selectedComponent === 'meeting'" 
+                        (click)="showComponent('meeting')">réunion</button>
+            </div>
+            
+
+      
+            <!-- Placeholder for component content -->
+    <div *ngIf="selectedComponent === 'notes'">
+        <app-notes></app-notes>
+    </div>
+
+    <div *ngIf="selectedComponent === 'email'">
+        <app-emails></app-emails>
+    </div>
+
+    <div *ngIf="selectedComponent === 'tasks'">
+        <app-tasks></app-tasks>
+    </div>
+
+    <div *ngIf="selectedComponent === 'meeting'">
+        <app-meetings></app-meetings>
+    </div>
+            
+
+        </div>
+
+    </div>
+</div>
+
+</div>

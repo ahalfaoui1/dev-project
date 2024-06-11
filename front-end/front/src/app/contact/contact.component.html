@@ -1,0 +1,420 @@
+<div class="container-fluid  mt-4 mr-3 ml-3">
+    <div class="header-contact  mt-4  py-1 ">
+       
+            <div class="  d-flex   align-items-center px-4  py-2  justify-content-between  ">
+                <div class="   align-items-center "> <p class="lebel-client ">Contact</p> </div>
+                <div class=" btn-groupe row  ">
+                    <div class="">
+                        <button class="btn btn-circle  py-2 mr-2" (click)="openModalimport(importContact)"><i class="fa-solid fa-file-import"></i> Import</button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="composeEmailModalLabel" aria-hidden="true">
+                          <div class="modal-dialog  modal-dialog-centered " role="document">
+                            <div class="modal-content  modal-back  " style="width: 300% !important;">
+                              <ng-template #importContact>
+                                <div class="modalbody-import">
+                                  <div class="modal-header mb-1 ">
+                                    <h5 class="modal-title  " id="composeEmailModalLabel"></h5>
+                                    <button type="button" class="close" (click)="closeModal()">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                        
+                                  <div class="modal-body px-0 py-0"> 
+                                    <form id="contactForm" (ngSubmit)="submitImportContactForm()" enctype="multipart/form-data">
+                                      <div class="d-flex justify-content-center align-items-center">
+                                        <div class="file-upload-container">
+                                          <label for="file" class="file-input-label">
+                                            <img src="./assets/csv.png" id="photo" width="50" height="50" alt="Placeholder image">
+                                            <span *ngIf="selectedFileName" class="Name-Button-Import">{{ selectedFileName }}</span>
+                                          </label>
+                                          <input class="form-control file-input" id="file" name="file" type="file" (change)="onFileContactChange($event)" required>
+                                        </div>
+                                      </div>
+                        
+                                      <div class="modal-footer d-flex justify-content-center">
+                                        <button type="reset" class="btn btn-circle py-2 mr-2" (click)="closeModal()">Annuler</button>
+                                        <button type="submit" class="btn btn-circle py-2 btn-color">Importer le contact</button>
+                                      </div>
+                                    </form>
+                                  </div>
+                                </div>
+                              </ng-template>
+                            </div>
+                          </div>
+                        </div>
+                        
+                     
+                        <button class="btn  btn-circle  py-2  btn-color" (click)="openModal(addContact)">
+                            <i class="fa-solid fa-user-plus"></i> Ajouter Contact
+                        </button>
+                         <!-- Modal -->
+              <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="composeEmailModalLabel" aria-hidden="true">
+                <div class="modal-dialog " role="document">
+                    <div class="modal-content  modal-back  ">
+                        <ng-template #addContact>
+                        <div class="modal-header mb-1 ">
+                            <h5 class="modal-title  " id="composeEmailModalLabel">Ajouter Contact</h5>
+                            <button type="button" class="close" (click)="closeModal()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            
+                        </div>
+                        <hr class="line-modal">
+                        <div class="modal-body px-0 py-0">
+                            
+                            <form id="contactForm" (ngSubmit)="submitContactForm()" enctype="multipart/form-data">
+                              
+                                <div class="row ">
+
+                                    <div class="col-lg-4 align-items-center ">
+                                        <div class="profile-pic border mt-4 " >
+                                            <label class="-label" for="photo">
+                                            <span class="glyphicon glyphicon-camera "></span>
+                                            <span><i class="fa-solid fa-camera "></i></span> 
+                                            </label>
+                                             <input class="form-control"  id="photo" name="photo" type="file" accept="image/*" (change)="onFileChange($event)" required />
+                                             <img *ngIf="photo==''" src="https://www.shutterstock.com/image-vector/user-profile-icon-vector-avatar-600nw-2247726673.jpg" id="photo" width="50" height="50"  alt="Placeholder image">
+                                             <img *ngIf="photo" [src]="photo"  width="50" height="50" alt="Placeholder image">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+
+                                    <label for="email"   >Email</label>
+                                    <input [(ngModel)]="formData.email" type="email" id="email" name="email" class="form-ccontrol rounded" placeholder="contact@exemple.fr" required />
+                            
+                                    <label for="companyName" >Nom d'entreprise</label>
+                                    <input [(ngModel)]="formData.companyName" type="companyName" id="companyName" name="companyName" class="form-ccontrol rounded" placeholder="TF1" required />
+                            
+                                 
+                                    </div>
+                                    <div class="col-lg-4">
+                                    <label for="type" >Type Contact</label>
+                                    <select [(ngModel)]="formData.type" id="type" name="type" class="form-select form-ccontrol rounded" required>
+                                      <option value="Client" selected>Client</option>
+                                      <option value="Entreprise">Entreprise</option>
+                                     
+                                    </select>
+                                    
+                                    <label for="linkedin" >Linkedin</label>
+                                    <input [(ngModel)]="formData.linkedin" type="text" id="linkedin" name="linkedin" class="form-ccontrol rounded" placeholder="Linkedin" required />
+                          
+                                    </div>
+
+                                </div>
+                                <div class="row pb-4">
+                                    
+                                    <div class="col-lg-4  ">
+                                      
+                                       
+                                        <div class="">
+                                            <label for="lastName" >Prénom :</label>
+                                            <input [(ngModel)]="formData.lastName" type="text" id="lastName" name="lastName" class="form-ccontrol rounded" placeholder="prenom" required />
+                                            <label for="firstName" >Nom</label>
+                                            <input [(ngModel)]="formData.firstName" type="text" id="firstName" name="firstName" class="form-ccontrol rounded" placeholder="nom" required />
+                                    
+                                        </div>
+                                      
+                                    </div>
+                                    <div class="col-lg-4">
+                                     
+                                
+                                    <label for="jobTitle" >Intitulé du poste</label>
+                                    <input [(ngModel)]="formData.jobTitle" type="text" id="jobTitle" name="jobTitle" class="form-ccontrol rounded" placeholder="Intitulé du poste" required />
+                                   
+                                    <label for="phasecyclevie">Phase de cycle de vie</label>
+                                    <select [(ngModel)]="formData.phasecyclevie" id="phasecyclevie" name="phasecyclevie" class="form-select form-ccontrol rounded" required>
+                                        
+                                      <option value="Contact" selected>Contact</option>
+                                      <option value="NON Contact">Non Contact</option>
+                                    </select>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        
+                              
+                            
+                                 
+                            
+                                        <label for="status">Status de Contact</label>
+                                        <select [(ngModel)]="formData.status" id="status" name="status" class=" form-select form-ccontrol rounded" required>
+                                        
+                                          <option value="New">New</option>
+                                          <option value="Connected">Connected</option>
+                                          <option value="Open">Open</option>
+                                        </select>
+                                    
+                                    <label for="tel">tel</label>
+                                    <input [(ngModel)]="formData.tel" type="text" id="tel" name="tel" class="form-ccontrol rounded" placeholder="tel" required />
+                          
+                                    </div>
+
+                                </div>
+
+                                
+                               
+                              
+                                <div class="modal-footer d-flex justify-content-center  ">
+                                  <button type="reset" class="btn btn-bcircle  py-2 mr-2" (click)="closeModal()" >Annuler</button>
+                                  <button type="submit" class="btn  btn-bbcircle  py-2 ">Ajouter Contact</button>
+                                </div>
+                              </form>
+                              
+                              
+                        </div>
+                    </ng-template>
+                    </div>
+                </div>
+            </div>
+                    </div>
+                      
+             
+            
+              
+                </div>
+            </div>
+          
+            <div class="container-fluida px-0 ">
+                <div class="row px-4   mb-3  ">
+                  <div class="col w-100 ">
+                    <div class="btn-group show">
+                        <a class="btn btn-sm btn-circledown  dropdown-toggle custom-dropdown-toggle" style="color: #8079BD;" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          &nbsp;Propriétaire de contact <i class="fa-sharp fa-solid fa-chevron-down"></i> &nbsp;
+                        </a>
+                        <div class="dropdown-menu custom-dropdown-menu align-items-center">
+                          <a class="dropdown-item">Défaut</a>
+                          <a class="dropdown-item inter-col">Les nouveaux d'abord</a>
+                          <a class="dropdown-item">Les anciens d'abord</a>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col   w-100 ">
+                    <div class="btn-group ">
+                        <a class="btn btn-sm btn-circledown dropdown-toggle custom-dropdown-toggle" style="color: #8079BD;" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          &nbsp; Date de création <i class="fa-sharp fa-solid fa-chevron-down"></i> &nbsp;
+                        </a>
+                        <div class="dropdown-menu custom-dropdown-menu align-items-center">
+                          <a class="dropdown-item" href="#">Défaut </a>
+                          <a class="dropdown-item inter-col" href="#">Les nouveaux d'abord</a>
+                          <a class="dropdown-item" href="#">Les anciens d'abord</a>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col   w-100 ">
+                    <div class="btn-group ">
+                        <a class="btn btn-sm btn-circledown dropdown-toggle custom-dropdown-toggle" style="color: #8079BD;" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          &nbsp;Date la dernière activité <i class="fa-sharp fa-solid fa-chevron-down"></i> &nbsp;
+                        </a>
+                        <div class="dropdown-menu custom-dropdown-menu align-items-center">
+                          <a class="dropdown-item"  href="#">Défaut </a>
+                          <a class="dropdown-item inter-col" href="#">Les nouveaux d'abord</a>
+                          <a class="dropdown-item" href="#">Les anciens d'abord</a>
+                        </div>
+                      </div>
+                  </div>
+
+                  <div class="col  w-100">
+                    <div class="btn-group ">
+                        <a class="btn btn-sm btn-circledown dropdown-toggle custom-dropdown-toggle" style="color: #8079BD;" (onload)="onStatusContact('')" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          &nbsp; Statut de Contact <i class="fa-sharp fa-solid fa-chevron-down"></i> &nbsp;
+                      </a>
+                      <div class="dropdown-menu custom-dropdown-menu align-items-center">
+                          <a class="dropdown-item" (click)="onStatusContact('Contact')">Contact</a>
+                          <a class="dropdown-item inter-col" (click)="onStatusContact('Non Contact')">Non Contact</a>
+                      </div>  
+                      </div>
+                  </div>
+                  <div class="col   px-0  w-100 ">
+                    <div class="btn-group ">
+                        <div class=" has-search  w-100">
+                          <span class="fa fa-search form-control-feedback "></span>
+                          <input type="text" class=" form-control search_input btn-circledown dropdown-toggle custom-dropdown-toggle" style="color: #8079BD;" id="search" name="search" (input)="onSearch($event)" placeholder="recherche de Contact">
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+        <!--   <div class="  px-4   mb-3">
+              
+                  <div class="dropdown-container row flex-wrap  align-items-center  justify-content-between ">
+              
+                    <div class="btn-group show">
+                      <a class="btn btn-sm btn-circledown  dropdown-toggle custom-dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        &nbsp;Propriétaire de contact <i class="fa-sharp fa-solid fa-chevron-down"></i> &nbsp;
+                      </a>
+                      <div class="dropdown-menu custom-dropdown-menu align-items-center">
+                        <a class="dropdown-item">Défaut</a>
+                        <a class="dropdown-item inter-col">Les nouveaux d'abord</a>
+                        <a class="dropdown-item">Les anciens d'abord</a>
+                      </div>
+                    </div>
+              
+                    <div class="btn-group ">
+                      <a class="btn btn-sm btn-circledown dropdown-toggle custom-dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        &nbsp; Date de création <i class="fa-sharp fa-solid fa-chevron-down"></i> &nbsp;
+                      </a>
+                      <div class="dropdown-menu custom-dropdown-menu align-items-center">
+                        <a class="dropdown-item" href="#">Défaut </a>
+                        <a class="dropdown-item inter-col" href="#">Les nouveaux d'abord</a>
+                        <a class="dropdown-item" href="#">Les anciens d'abord</a>
+                      </div>
+                    </div>
+              
+                    <div class="btn-group ">
+                      <a class="btn btn-sm btn-circledown dropdown-toggle custom-dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        &nbsp;Date la dernière activité <i class="fa-sharp fa-solid fa-chevron-down"></i> &nbsp;
+                      </a>
+                      <div class="dropdown-menu custom-dropdown-menu align-items-center">
+                        <a class="dropdown-item"  href="#">Défaut </a>
+                        <a class="dropdown-item inter-col" href="#">Les nouveaux d'abord</a>
+                        <a class="dropdown-item" href="#">Les anciens d'abord</a>
+                      </div>
+                    </div>
+              
+                    <div class="btn-group ">
+                      <a class="btn btn-sm btn-circledown dropdown-toggle custom-dropdown-toggle" (onload)="onStatusContact('')" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        &nbsp; Statut de Contact <i class="fa-sharp fa-solid fa-chevron-down"></i> &nbsp;
+                    </a>
+                    <div class="dropdown-menu custom-dropdown-menu align-items-center">
+                        <a class="dropdown-item" (click)="onStatusContact('Contact')">Contact</a>
+                        <a class="dropdown-item inter-col" (click)="onStatusContact('Non Contact')">Non Contact</a>
+                    </div>  
+                    </div>
+                    <div class="btn-group">
+                        <div class=" has-search ">
+                          <span class="fa fa-search form-control-feedback "></span>
+                          <input type="text" class="form-control search_input btn-circledown dropdown-toggle custom-dropdown-toggle" id="search" name="search" (input)="onSearch($event)" placeholder="recherche de Contact">
+                        </div>
+                      </div>
+                  </div>
+              </div>-->
+              
+            </div>
+<br>
+<div class="row">
+    <ng-container *ngFor="let Contact of Contacts">     
+      <!--  <ng-container *ngFor="let contact of contacts">     -->  
+        <div class="col-3 col-6 col-lg-4 col-xl-3  px-1 mb-2 contactdetails" >
+       
+            <div class="card px-0 py-2">
+                <div class="card-body  py-2 " >
+                    <div class="d-flex align-items-center  ">
+                        <div class=" text-center align-items-center  " style="width: 40%;">
+                         
+                            <img   *ngIf="Contact.photo !== null"  [src]="'data:image/*;base64,' +Contact.photo"
+                       
+                            alt="User Image" class="card-img-top img-fluid rounded-circle"
+                            style="object-fit: initial; object-position: center center; width: 65%; height: 65%;">
+                       
+                      <img *ngIf="Contact.photo == null"
+                            src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAxL3JtNjA5LXNvbGlkaWNvbi13LTAwMi1wLnBuZw.png"
+                            alt="User Image" class="card-img-top img-fluid rounded-circle"
+                            style="object-fit: initial; object-position: center center; width: 65%; height: 65%;">
+                       
+                        </div>
+                        <div class="align-items-center px-1  " style="width: 60%;">
+
+                            <div class="d-flex justify-content-between">
+                                <h4 class="card-title mb-2 " [routerLink]="['/contact/details', Contact.id]"  >{{ Contact.lastName }} 
+                                    <br> {{ Contact.firstName }}</h4>
+                               <!--   
+                            <button (click)="deleteContact(Contact.id)" class="  px-2  btn-trash" >
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                               --> 
+                               <a class=" px-2 py-0 btn-delete" (click)="openDelModal(deletecontact)">
+                                <img src="./assets/octicon_trashcan-16.png" class="img-fluid" alt="">
+                                <!--<i class="fa-solid fa-trash"></i>-->
+                            </a>
+                            
+                          
+                            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="composeEmailModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered px-4" role="document">
+                                    <div class="modal-content modal-back ">
+                                        <ng-template #deletecontact>
+                                        <div class="modal-header ">
+                                            <h5 class="modal-title" id="composeEmailModalLabel">Supprimer Contact </h5>
+                                            <button type="button" class="close" (click)="closeModal()">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <hr>
+                                        <div class="modal-body py-0">
+                                            <form id="contactForm" (ngSubmit)="deleteContact(Contact.id)" enctype="multipart/form-data">
+
+                                            <div class="row d-flex">
+                                                <label for="delete">Voulez Vous Supprimer {{ Contact.lastName }}</label>
+                                            </div>
+                                            <div class="modal-footer d-flex justify-content-center">
+                                                <button type="button" class="btn btn-colorbtn"  (click)="closeModal()">Annuler</button>
+                                                <button type="submit" class="btn btn-colorbtn btn-addcolor" >Supprimer Contact</button>
+                                            </div>
+
+                                            </form>
+                                        </div>
+                                    </ng-template>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                     </div>
+                           
+                            <a href="#" class="client-circledown px-2   py-1 " > {{ Contact.companyName }} </a>
+                            <p class="card-text mt-2 "  style="font-size: 11px;">Description/informations complémentaires</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <hr class="line">
+                <div class="d-flex justify-content-between px-4  mt-2">
+                    <p class="mb-0 footer-card">Dernier Compte</p>
+                    <p class="mb-0 footer-card" >{{ Contact.dateCreated | date:'yyyy-MM-dd' }}</p>
+                </div>
+            </div>
+        </div>
+        
+    </ng-container>
+</div>
+
+    
+<div class=" mt-2 px-0 d-flex justify-content-between    ">
+     <!-- Reset Filters button -->
+  <div class=" ">
+    <button class="btn p  btn-primary  reset-button py-2" (click)="resetFilters()" >Réinitialiser tous les filtres</button>
+</div>
+    <!-- Additional content or controls -->
+    <div class="px-0">
+        <ul class="pagination  ">
+            <li class="page-item" *ngIf="currentPage > 0">
+                <a class="page-link  page-btn" (click)="onPreviousNextPage(currentPage-1)">
+                    <span aria-hidden="true">&laquo; Précédent</span>
+                </a>
+            </li>
+      
+            <ng-container *ngIf="totalPages !== undefined; else noPages">
+                <li class="page-item" *ngFor="let page of pagesArray()">
+                    <a class="page-link   page-btn  " (click)="onPageChange(page-1)" [class.active]=" currentPage === page-1">{{ page }}</a>
+                </li>
+            </ng-container>
+            
+            <ng-template #noPages>
+                <li class="page-item">
+                    <span class="page-link page-btn  " style="cursor: not-allowed;">...</span>
+                </li>
+            </ng-template>
+      
+            <li class="page-item " *ngIf="currentPage < totalPages - 1">
+                <a class="page-link  page-btn" (click)="onPreviousNextPage(currentPage + 1)">
+                    <span aria-hidden="true">Suivant &raquo;</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+ 
+</div>
+
+
+
+
+
+
+</div>

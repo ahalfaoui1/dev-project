@@ -1,0 +1,249 @@
+<div class="d-flex justify-content-between align-items-center px-2 pb-0  text-center">
+
+    <p class="date-note mt-3"><strong>24 janvier</strong></p>
+
+    <button class="btn btn-colorbtn2 px-3 py-2" data-toggle="modal" data-target="#tasksModal"> Ajouter Tâche</button>
+
+    <div class="modal fade " id="tasksModal" tabindex="-1" role="dialog" aria-labelledby="tasksModal"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
+            <div class="modal-content  ">
+                <form id="contactForm"   enctype="multipart/form-data">
+  
+                    <div class="modal-header p-2">
+                        <h5 class="modal-title" id="composeEmailModalLabel">Ajouter Tâche</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body p-2">
+                        <hr>
+                        <div class="d-flex flex-wrap ">
+                            <div class="form-group col-lg-6 text-left px-0">
+                                <label  for="expirationdate"  class="date-note">Date d'échéance</label>
+                                <div class="input-group">
+                                    <input [(ngModel)]="formData.expirationdate" type="date" id="expirationdate" name="expirationdate"
+                                        class="form-control col-5 input-bg btn-sm-3 px-3 round-input mr-3" />
+                                    <input type="time" id="dueTime"
+                                        class="form-control col-3 input-bg btn-sm-3 px-3 round-input" />
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-6 text-left px-0">
+                                <label for="dueDate" class="date-note">Envoyer un Rappel</label>
+                                <select name="reminderOption" class="round-input col-5 input-bg form-select btn-sm-3">
+                                    <option value="aucune rappel">Aucun rappel</option>
+                                    <option value="option1">Option 1</option>
+                                    <option value="option2">Option 2</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group text-left px-2">
+                            <div class="form-check">
+                                <input type="checkbox" id="reminderCheckbox" class="btn-sm-3 form-check-input input-bg">
+                                <label for="reminderCheckbox" class="date-note">Définir un rappel</label>
+                            </div>
+                        </div>
+                        <hr>
+                        <!-- Your email composition form can go here -->
+                        <div class="d-flex justify-content-between text-left flex-wrap ">
+                            <div class="form-group col-lg-3 px-0">
+                                <label for="type" class="date-note">Type</label>
+                                <select name="type" class="round-input input-bg form-select">
+                                    <option value="aucun rappel">Aucun rappel</option>
+                                    <option value="option1">E-mail</option>
+                                    <option value="option2">Appel</option>
+                                    <option value="option3">A faire</option>
+                                    <option value="option3">Autre</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label for="priority" class="date-note">Priorité</label>
+                                <select name="priority" class="round-input input-bg form-select">
+                                    <option value="aucune rappel">Aucun</option>
+                                    <option value="option1">Faible</option>
+                                    <option value="option2">Moyen</option>
+                                    <option value="option3">Elevé</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label for="queue" class="date-note">Fil d'attente</label>
+                                <select name="queue" class="round-input input-bg form-select">
+                                    <option value="aucune rappel">Aucun rappel</option>
+                                    <option value="option1">Répondu </option>
+                                    <option value="option2">En attente</option>
+                                    <option value="option3">Terminer </option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label for="assignee" class="date-note" >Attribué à</label>
+                                <select name="assignee" class="round-input input-bg form-select">
+                                    <option value="aucune rappel">Group Berneso</option>
+                                    <option value="option1">Option 1</option>
+                                    <option value="option2">Option 2</option>
+                                </select>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group back-text-area px-3 py-2" style="background-color: #EAE9F4;">
+                            <textarea [(ngModel)]="formData.description" contenteditable="true"  class="form-control" id="description"  name="description" placeholder="votre commentaire"
+                                rows="7">Tapez Votre Commentaire</textarea>
+                            <!-- <div id="emailToolbar" class="barrejoint text-left">
+                                <button type="button" class="btn"
+                                    onclick="document.execCommand('bold', false, null)"><strong>B</strong></button>
+                                <button type="button" class="btn"
+                                    onclick="document.execCommand('italic', false, null)"><em>I</em></button>
+                                <button type="button" class="btn barrejoin"
+                                    onclick="document.execCommand('underline', false, null)"><u>U</u></button>
+
+                                    <button type="button" class="btn" onclick="attachFile()"><i
+                                        class="fa-regular fa-file"></i></button>
+                                <button type="button" class="btn" onclick="attachPhoto()"><i
+                                        class="fa-regular fa-image"></i></button>
+                            </div> -->
+                        </div>
+                    </div>
+
+                    <div class="modal-footer text-center p-0">
+                        <button type="submit" class="btn btn-send px-4 py-2 text-center mx-auto" (click)="submitTaskContact(id, formData)">Ajouter Tâche</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<hr>
+
+<div class="col-back p-4   py-3 mt-3" *ngFor="let task of task_Entreprise">
+    <div class="  ">
+        <div class="d-flex justify-content-between align-items-center mb-2  ">
+            <div class="d-flex ">
+                <i class="fas fa-note-sticky" style="font-size: 20px;"></i>
+                <p class="ml-2 mb-0 pb-0" style="color: #2B1F91; font-size: 16px;">{{task.description}}</p>
+            </div>
+            <div>
+                <button class="btn btn-colorbtn5 px-4" style="color: #2B1F91;" >{{task.dateCreated}} </button>
+
+                <a class="px-2 py-0 btn-delete" href="#">
+                    <img src="./assets/octicon_trashcan-16.png" class="img-fluid" alt="">
+                    <!--<i class="fa-solid fa-trash"></i>-->
+                </a>
+            </div>
+        </div>
+        <hr>
+        <form class="d-flex  ml-1 align-items-center">
+            <div class="form-group  ">
+                <label for="dueDate" style="color: #2B1F91;">{{task.dateCreated}}</label>
+                <div class="input-group" >
+                    <input type="date"  id="dueDate" class="form-select  round-input  px-2 w-25 mr-4" />
+                    <input type="time" id="dueTime" class="form-select  round-input px-2" />
+                </div>
+            </div>
+            <div class="form-group ml-4">
+                <label for="dueDate" style="color: #2B1F91;">Rappel</label>
+                <select name="reminderOption" style="color: #2B1F91;" class="round-input form-select   mr-2">
+                    <option value="aucune rappel">Aucun rappel</option>
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                </select>
+            </div>
+            <div class="form-group  ml-4 mt-4">
+                <div class="form-check ">
+                    <input type="checkbox" id="reminderCheckbox" class="form-check-input  btn-sm">
+                    <label for="reminderCheckbox" style="color: #2B1F91;" class="form-check-label ">Définir un rappel</label>
+                </div>
+            </div>
+        </form>
+
+        <hr>
+
+
+        <div class="   d-flex ml-1 mr-1 ">
+            <div class="form-group pr-4 mr-4">
+                <label for="type" style="color: #2B1F91;">Type</label>
+                <select name="type" style="color: #2B1F91;" class="round-input form-select   ">
+                    <option value="aucun rappel">Aucun rappel</option>
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                </select>
+            </div>
+            <div class="form-group pr-4 mr-4">
+                <label for="priority" style="color: #2B1F91;">Priorité</label>
+                <select name="priority" style="color: #2B1F91;" class="round-input form-select  ">
+                    <option value="aucune rappel">Aucun rappel</option>
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                </select>
+            </div>
+            <div class="form-group pr-4 mr-4">
+                <label for="queue" style="color: #2B1F91;">Fil d'attente</label>
+                <select name="queue" class="round-input form-select  " style="color: #2B1F91;">
+                    <option value="aucune rappel">Aucun rappel</option>
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="assignee" style="color: #2B1F91;">Attribué à</label>
+                <select name="assignee" class="round-input form-select   " style="color: #2B1F91;">
+                    <option value="aucune rappel">Aucun rappel</option>
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                </select>
+            </div>
+
+        </div>
+
+
+
+        <button class="btn btn-send1  py-2
+             w-100 px-0" data-toggle="modal" data-target="#commentsModal">Ajouter Commentaire</button>
+        <div class="modal fade " id="commentsModal" tabindex="-1" role="dialog" aria-labelledby="commentsModal"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered p-3" role="document">
+                <div class="modal-content modal-back  py-2">
+                    <div class="modal-header ">
+                        <h5 class="modal-title " id="composeEmailModalLabel">Ajouter Commentaire</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <hr>
+                    <div class="modal-body back-text-area pb-0">
+                        <!-- Your email composition form can go here -->
+
+                        <div class="form-group  " >
+
+                            <textarea contenteditable="true" class="form-control" id="emailContent"
+                                rows="7">Tapez Votre Commentaire</textarea>
+                            <div id="emailToolbar" class="barrejoint text-left ">
+                                <button type="button" class="btn"
+                                    onclick="document.execCommand('bold', false, null)"><strong>B</strong></button>
+                                <button type="button" class="btn"
+                                    onclick="document.execCommand('italic', false, null)"><em>I</em></button>
+                                <button type="button" class="btn barrejoin"
+                                    onclick="document.execCommand('underline', false, null)"><u>U</u></button>
+
+                                <!-- New buttons for Joint File and Joint Photo -->
+                                <button type="button" class="btn" onclick="attachFile()"><i
+                                        class="fa-regular fa-file"></i></button>
+                                <button type="button" class="btn" onclick="attachPhoto()"><i
+                                        class="fa-regular fa-image"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer text-center mt-2">
+                        <button type="button" class="btn  px-4 py-2  btn-send1 text-center mx-auto">Ajouter
+                            Commentaire</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
