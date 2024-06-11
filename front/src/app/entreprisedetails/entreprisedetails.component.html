@@ -1,0 +1,362 @@
+<div class="container-fluid pt-3 mb-4 ">
+
+  <div class="container-fluid  ">
+    <button class="btn btn-colorcontact px-4 mt-4 mb-3" routerLink="/entreprises" ><i class="fa-solid fa-angle-left" style="color: black !important;"></i> &nbsp; &nbsp;Entreprise</button>
+   
+    <div class="row">
+
+        <div *ngIf="Entreprise" class="col-md-4 col1 pt-4"  style="overflow-y: auto; overflow-x: 0;">
+            
+           <div class=" ">
+                <div class="   profile-pic border">
+                <label class="-label" for="image">
+                <span class="glyphicon glyphicon-camera "></span>
+                <span><i class="fa-solid fa-camera"></i></span> 
+                </label>
+                
+                <input  id="image" name="image" type="file" accept="image/*" (change)="onFileChange($event)" required />
+
+                    
+                    <img   *ngIf="Entreprise.photo !== null"  [src]="'data:image/*;base64,' +Entreprise.photo"
+                          
+                               alt="User Image" class="card-img-top img-fluid "
+                               style="object-fit: initial; object-position: center center; width: 80px; height: 80px;">
+                          
+                         <img *ngIf="Entreprise.photo == null"
+                               src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAxL3JtNjA5LXNvbGlkaWNvbi13LTAwMi1wLnBuZw.png"
+                               alt="User Image" class="card-img-top img-fluid "
+                               style="object-fit: initial; object-position: center center; width: 80px; height: 80px;">
+
+                </div>
+                <div class=" px-2" style="color:#FEFC5A">
+                 {{ Entreprise.name }}
+                  <!--  <p>{{ Entreprise.type }} </p>-->
+                </div>
+                
+            </div>
+
+<br>
+<div class="d-flex gap-3 ">
+  
+  <!--  <button type="button" class="btn btn-sm btn-color btn-square" (click)="showComponent('activite','activite')">
+        <i class="fas fa-note-sticky font-icon"></i> Activite
+    </button>-->
+
+    <button type="button" class="btn btn-sm btn-color btn-square" (click)="showComponent('activity','notes')">
+        <i class="fas fa-note-sticky font-icon"></i> Notes
+    </button>
+
+    <button type="button" class="btn btn-sm btn-color btn-square" (click)="showComponent('activity','email')">
+        <i class="fas fa-envelope font-icon"></i> Email
+    </button>
+
+    <button type="button" class="btn btn-sm btn-color btn-square" (click)="showComponent('activity','tasks')">
+        <i class="fas fa-bars font-icon"></i> Tâches
+    </button>
+
+    <button type="button" class="btn btn-sm btn-color btn-square" (click)="showComponent('activity','meeting')">
+        <i class="far fa-calendar-days font-icon"></i> Réunion
+    </button>
+</div>
+
+
+            <br>
+
+            <div class="d-flex align-items-center">
+                <p class="label-details">Details de l'entreprise:</p>
+                <p class="ml-auto justify-content-end  mr-3 ">
+                    <a class=" px-2 py-0 btn-delete" (click)="openModal(updateEntreprise)">
+                    <img src="./assets/edit.png" alt="" class="img-fluid">
+                  </a>
+                  <!--<i class="fas fa-pen-to-square"></i> -->  
+                </p>
+                                         <!-- Modal -->
+              <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="composeEmailModalLabel" aria-hidden="true">
+                <div class="modal-dialog " role="document">
+                    <div class="modal-content  modal-back  ">
+                        <ng-template #updateEntreprise>
+                        <div class="modal-header mb-1 ">
+                            <h5 class="modal-title  " id="composeEmailModalLabel">Modifier l'entreprise {{Entreprise.name}}</h5>
+                            <button type="button" class="close" (click)="closeModal()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                          
+                        </div>
+                        <hr class="line-modal">
+                        <div class="modal-body px-0 py-0">
+                            
+                            <form id="contactForm" (ngSubmit)="UpdateEntreprise(Entreprise.id)" enctype="multipart/form-data">
+                               
+                                <div class=" row ">
+                                    <div class="col-lg-4 ">
+                                        <div class="profile-pic border" >
+                                            <label class="-label" for="photo">
+                                            <span class="glyphicon glyphicon-camera "></span>
+                                            <span><i class="fa-solid fa-camera "></i></span> 
+                                            </label>
+                                             <input  id="photo" name="photo" type="file" accept="image/*" (change)="onFileChange($event)" required />
+                                             <img *ngIf="photo==''" src="https://www.shutterstock.com/image-vector/user-profile-icon-vector-avatar-600nw-2247726673.jpg" id="photo" width="50" height="50"  alt="Placeholder image">
+                                             <img *ngIf="photo" [src]="photo"  width="50" height="50" alt="Placeholder image">
+                                        </div>  
+                                    </div>
+                                    <div class="col-lg-4 ">
+                                        <label for="EmplyeeNb">Nombre d'employés</label>
+                                        <input [(ngModel)]="formData.emplyeeNb" type="text" id="EmplyeeNb" name="EmplyeeNb" class="form-control rounded" placeholder="{{Entreprise.employeeNb}}" required />
+                                    </div>
+                                    
+                                </div>
+
+                                <div class=" row ">
+                                    <div class="col-lg-4 ">
+                                        <label for="Adress">Adresse</label>
+                                        <input [(ngModel)]="formData.adress" type="text" id="Adress" name="Adress" class="form-control rounded" placeholder="{{Entreprise.adress}}" required />
+                                    </div>
+                                    <div class="col-lg-4 ">
+                                        <label for="Email">E-mail</label>
+                                        <input [(ngModel)]="formData.email" type="text" id="Email" name="Email" class="form-control rounded" placeholder="{{Entreprise.email}}" required />
+                                    </div>
+                                    <div class="col-lg-4 ">
+                                        <label for="Tel">Téléphone</label>
+                                        <input [(ngModel)]="formData.tel" type="text" id="Tel" name="Tel" class="form-control rounded" placeholder="{{Entreprise.tel}}" required />
+                                    </div>
+                                </div>
+                                <div class=" row ">
+                                    <div class="col-lg-4 ">
+                                        <label for="City">Ville</label>
+                                        <input [(ngModel)]="formData.city" type="text" id="City" name="City" class="form-control rounded" placeholder="{{Entreprise.city}}" required />
+                                    </div>
+                                    <div class="col-lg-4 ">
+                                        <label for="Type">Type</label>
+                                        <select [(ngModel)]="formData.type" id="Type" name="Type" class="form-control rounded" required>
+                                          <option value="Entreprise">Entreprise intermédiaire</option>
+                                          <option value="Client">Client</option>
+                                          <option value="Revendeur">Revendeur</option>
+                                          <option value="Fournisseur">Fournisseur</option>
+                                          <option value="Autre">Autre</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-4 ">
+                                        <label for="TimeZone">Fuseau Horaire</label>
+                                        <input [(ngModel)]="formData.timeZone" type="text" id="TimeZone" name="TimeZone" class="form-control rounded" placeholder="{{Entreprise.timeZone}}" required />
+                                    </div>
+                                </div>
+                              
+                                <div class=" row ">
+                                    <div class="col-lg-4 ">
+                                            <label for="ZipCode">Code postal</label>
+                                            <input [(ngModel)]="formData.zipCode" type="text" id="ZipCode" name="ZipCode" class="form-control rounded" placeholder="{{Entreprise.zipCode}}" required />
+                                        <label for="Country">Pays</label>
+                                        <input [(ngModel)]="formData.country" type="text" id="Country" name="Country" class="form-control rounded" placeholder="{{Entreprise.country}}" required />
+                                                                            </div>
+                                    <div class="col-lg-8 ">
+                                        <label for="Description">Description</label>
+                                                <div class="form-group col-back px-1 py-1  ">
+                                                
+                                                    <textarea contenteditable="true" [(ngModel)]="formData.description"  id="Description" name="Description" placeholder="{{Entreprise.description}}"  class="form-control" id="emailContent" rows="2">Tapez une description</textarea>
+                                                    <div id="emailToolbar" class="barrejoint px-1 py-0">
+                                                        <button type="button" class="btn" onclick="document.execCommand('bold', false, null)"><strong>B</strong></button>
+                                                        <button type="button" class="btn" onclick="document.execCommand('italic', false, null)"><em>I</em></button>
+                                                        <button type="button" class="btn barrejoin" onclick="document.execCommand('underline', false, null)"><u>U</u></button>
+                                                        <button type="button" class="btn" onclick="attachFile()"><i class="fa-regular fa-file"></i></button>
+                                                        <button type="button" class="btn" onclick="attachPhoto()"><i class="fa-regular fa-image"></i></button>
+                                                    </div>
+                                                </div>
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer d-flex justify-content-center pt-3">
+                                  <button type="reset" class="btn px-3 btn-sm btn-colorbtn" (click)="closeModal()">Annuler</button>
+                                  <button type="submit" class="btn px-3 btn-sm btn-colorbtn4 btn-addcolor" >Modifier l'entreprise</button>
+                                </div>
+                              </form>
+
+                              
+                              
+                        </div>
+                    </ng-template>
+                    </div>
+                </div>
+            </div>
+            </div>
+            
+            
+
+
+           
+            <div class="px-0">
+
+
+                <div class=" row d-flex  align-items-center ">
+                    <div class="col-lg-4">
+                        <p class="text-truncate pad-row1">Site Web:</p>
+                    </div>
+                    <div class="col-lg-8 text-right">
+                        <p class="pad-row1">{{ Entreprise.webSite }}</p>
+                    </div>
+                </div>
+                <div class=" row d-flex  align-items-center ">
+                    <div class="col-lg-4">
+                        <p class="text-truncate pad-row1">Linkedin:</p>
+                    </div>
+                    <div class="col-lg-8 text-right">
+                        <p class="pad-row1">{{ Entreprise.linkedin }}</p>
+                    </div>
+                </div>
+                <div class=" row d-flex  align-items-center ">
+                    <div class="col-lg-4">
+                        <p class="text-truncate pad-row1">Numéro de téléphone:</p>
+                    </div>
+                    <div class="col-lg-8 text-right">
+                        <p class="pad-row1">{{ Entreprise.tel }}</p>
+                    </div>
+                </div>
+                
+                <div class="row d-flex  align-items-center">
+                    <div class="col-lg-4">
+                        <p class="text-truncate pad-row1">Secteur d'activité:</p>
+                    </div>
+                    <div class="col-lg-8 text-right">
+                        <p class="pad-row1">{{ Entreprise.activityArea }}</p>
+                    </div>
+                </div>
+                <div class="row d-flex  align-items-center">
+                    <div class="col-lg-4">
+                        <p class="text-truncate pad-row1">Type:</p>
+                    </div>
+                    <div class="col-lg-8 text-right">
+                        <p class="pad-row1">{{ Entreprise.type }}</p>
+                    </div>
+                </div>
+                <div class="row d-flex  align-items-center">
+                    <div class="col-lg-4">
+                        <p class="text-truncate pad-row1">Adresse:</p>
+                    </div>
+                    <div class="col-lg-8 text-right">
+                        <p class="pad-row1">{{ Entreprise.adress }}</p>
+                    </div>
+                </div>
+                <div class="row d-flex  align-items-center">
+                    <div class="col-lg-4">
+                        <p class="text-truncate pad-row1">Ville:</p>
+                    </div>
+                    <div class="col-lg-8 text-right">
+                        <p class="pad-row1">{{ Entreprise.city }}</p>
+                    </div>
+                </div>
+                <div class="row d-flex  align-items-center">
+                    <div class="col-lg-4">
+                        <p class="text-truncate pad-row1">Code postale:</p>
+                    </div>
+                    <div class="col-lg-8 text-right">
+                        <p class="pad-row1">{{ Entreprise.zipCode }}</p>
+                    </div>
+                </div>
+                <div class="row d-flex  align-items-center">
+                    <div class="col-lg-4">
+                        <p class="text-truncate pad-row1">Pays:</p>
+                    </div>
+                    <div class="col-lg-8 text-right">
+                        <p class="pad-row1">{{ Entreprise.country }}</p>
+                    </div>
+                </div>
+                <div class="row d-flex  align-items-center">
+                    <div class="col-lg-4">
+                        <p class="text-truncate pad-row1">Fuseau horaire:</p>
+                    </div>
+                    <div class="col-lg-8 text-right">
+                        <p class="pad-row1">{{ Entreprise.timeZone }}</p>
+                    </div>
+                </div>
+                <div class="row d-flex  align-items-center">
+                    <div class="col-lg-4">
+                        <p class="text-truncate pad-row1">Nombre d'employée:</p>
+                    </div>
+                    <div class="col-lg-8 text-right">
+                        <p class="pad-row1">{{ Entreprise.employeeNb }}</p>
+                    </div>
+                </div>
+            </div>
+         
+        </div>
+
+        <div class="col-md-8 col2 pt-4" style="overflow-y: auto;">
+
+            <div class="d-flex">
+                <p class="component-link pr-3" (click)="showComponent('overview', '')">Overview</p>
+                <p class="component-link" (click)="showComponent('activity', 'activite')">Activity</p>
+            </div>
+
+            <div *ngIf="selectedComponent1 === 'overview'">
+                <app-overview></app-overview>
+            </div>
+            <div *ngIf="selectedComponent1 === 'activity'">
+                <div class="d-flex ml-2">
+                   <!-- <button class="btn btn-sm btn-colorbtn px-sm-4 mr-2" (click)="showComponent('activity', 'activite')">Activite</button>
+                    <button class="btn btn-sm btn-colorbtn px-sm-4 mr-2" (click)="showComponent('activity', 'notes')">Notes</button>
+                    <button class="btn btn-colorbtn btn-sm px-sm-4 mr-2" (click)="showComponent('activity', 'email')">Email</button>
+                    <button class="btn btn-sm btn-colorbtn px-sm-4" (click)="showComponent('activity', 'tasks')">Tache</button>
+                    <button class="btn btn-sm px-sm-4 btn-colorbtn ml-2" (click)="showComponent('activity', 'meeting')">Réunion</button>
+                    <div class="d-flex ml-2">-->
+                        <button class="btn btn-sm btn-colorbtn px-sm-4 mr-2" 
+                                [class.active]="selectedComponent === 'notes'" 
+                                (click)="showComponent('activity','notes')">Notes</button>
+                    
+                        <button class="btn btn-colorbtn btn-sm px-sm-4 mr-2" 
+                                [class.active]="selectedComponent === 'email'" 
+                                (click)="showComponent('activity','email')">Email</button>
+                    
+                        <button class="btn btn-sm btn-colorbtn px-sm-4" 
+                                [class.active]="selectedComponent === 'tasks'" 
+                                (click)="showComponent('activity','tasks')">Tache</button>
+                    
+                        <button class="btn btn-sm px-sm-4 btn-colorbtn ml-2" 
+                                [class.active]="selectedComponent === 'meeting'" 
+                                (click)="showComponent('activity','meeting')">Réunion</button>
+                </div>
+                <div *ngIf="selectedComponent2==='activite' || selectedComponent=='activite' ">
+                    <app-activite></app-activite>
+                </div>
+                <div *ngIf="selectedComponent2==='notes' || selectedComponent=='notes'  ">
+                  
+                    <app-notes></app-notes>
+                </div>
+                <div *ngIf="selectedComponent2==='email' || selectedComponent=='email' ">
+                   
+                    <app-emails></app-emails>
+                </div>
+                <div *ngIf="selectedComponent2==='tasks' || selectedComponent=='tasks' ">
+                  
+                    <app-tasks></app-tasks>
+                </div>
+                <div *ngIf="selectedComponent2==='meeting' || selectedComponent=='meeting' ">
+                  
+                    <app-meetings></app-meetings>
+                </div>
+            </div>
+
+<!--
+            <div *ngIf="selectedComponent2==='activite'">
+                <app-activite></app-activite>
+            </div>
+            <div *ngIf="selectedComponent2==='notes'">
+                <app-notes></app-notes>
+            </div>
+            <div *ngIf="selectedComponent2==='email'">
+                <app-emails></app-emails>
+            </div>
+            <div *ngIf="selectedComponent2==='tasks'">
+                <app-tasks></app-tasks>
+            </div>
+            <div *ngIf="selectedComponent2==='meeting'">
+                <app-meetings></app-meetings>
+            </div>-->
+
+        
+
+
+        </div>
+
+    </div>
+</div>
+
+</div>

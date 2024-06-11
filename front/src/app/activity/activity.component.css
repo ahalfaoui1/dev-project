@@ -1,0 +1,16 @@
+.active {
+    background-color:#2B1F91 !important;
+    color: #FFFFFF !important;
+    border-radius:  50px;
+    border: 1px solid #2B1F91; /* Replace with your desired border color */
+}
+.btn-colorbtn{
+    font-size: 14px;
+    font-family: 'Manrope';
+    line-height: 120%;
+    letter-spacing: -3%;
+    background-color: #FFFFFF;
+    border-radius: 30px !important;
+    border: 1px solid #2B1F91; /* Replace with your desired border color */
+    
+}

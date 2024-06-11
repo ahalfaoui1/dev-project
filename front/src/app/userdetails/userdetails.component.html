@@ -1,0 +1,170 @@
+<div class="container-fluid pt-4 mb-4 ">
+
+
+
+
+
+
+    
+  <div class="d-flex justify-content-between">
+      <button class="btn btn-colorcontact" routerLink="/users" ><i class="fa-solid fa-angle-left" style="color: #2B1F91 !important;"></i> Utilisateurs</button>
+
+     <!-- <div class="d-flex justify-content-end">
+          <div class="input-group search_container">
+              <input class="form-control search_input" type="text" name="" placeholder="Search...">
+              <div class="input-group-append">
+                  <span class="input-group-text search_icon"><i class="fas fa-search"></i></span>
+              </div>
+          </div>
+      </div>-->
+  </div>
+
+  <br><br>
+
+  <div class="container-fluid  ">
+    <div class="row">
+
+        <div *ngIf="user" class="col-lg-4 col1 pt-4"  style="overflow-y: auto; overflow-x: 0;">
+            
+           <!-- <img   *ngIf="user.image !== null"  [src]="'data:image/*;base64,' +user.image"
+            alt="User Image" width="80" height="80" >-->
+            <div class=" row d-flex pt-4">
+                <div class="col-lg-4  px-0 py-0 profile-pic border">
+                <label class="-label" for="image">
+                <span class="glyphicon glyphicon-camera "></span>
+                <span><i class="fa-solid fa-camera"></i></span> 
+                </label>
+                
+                <input  id="image" name="image" type="file" accept="image/*" (change)="onFileChange($event)" required />
+
+                    
+                    <img   *ngIf="user.image !== null"  [src]="'data:image/*;base64,' +user.image"
+                          
+                               alt="User Image" class="card-img-top img-fluid rounded-circle"
+                               style="object-fit: initial; object-position: center center; width: 80px; height: 80px;">
+                          
+                         <img *ngIf="user.image == null"
+                               src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAxL3JtNjA5LXNvbGlkaWNvbi13LTAwMi1wLnBuZw.png"
+                               alt="User Image" class="card-img-top img-fluid rounded-circle"
+                               style="object-fit: initial; object-position: center center; width: 80px; height: 80px;">
+
+                </div>
+                <div class="col-lg-7 align-items-center justify-content-start">
+                    <p>{{ user.firstname }} {{ user.lastname }}</p>
+                    <p>{{ user.role.name }} </p>
+                </div>
+                
+            </div>
+<br>
+
+            <div class="d-flex gap-3 ">
+                <button type="button" class="btn btn-sm btn-color btn-square" (click)="showComponent('notes')">
+                  <i class="fas fa-note-sticky font-icon"></i> Notes
+                </button>
+              
+                <button type="button" class="btn btn-sm btn-color btn-square" (click)="showComponent('email')">
+                  <i class="fas fa-envelope font-icon"></i> Email
+                </button>
+              
+                <button type="button" class="btn btn-sm btn-color btn-square" (click)="showComponent('tasks')">
+                  <i class="fas fa-bars font-icon"></i> Tâches
+                </button>
+              
+                <button type="button" class="btn btn-sm btn-color btn-square" (click)="showComponent('meeting')">
+                  <i class="far fa-calendar-days font-icon"></i> Réunion
+                </button>
+              </div>
+            
+
+              <br>
+
+            <div class="d-flex align-items-center">
+                <p class="label-details">Details client:</p>
+                <p class="ml-auto justify-content-end "><i class="fas fa-pen-to-square"></i></p>
+            </div>
+            
+
+            <br>
+            <div class="px-0">
+
+
+                <div class=" row d-flex  align-items-center ">
+                    <div class="col-md-6">
+                        <p class="text-truncate">Email:</p>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <p>{{ user.email }}</p>
+                    </div>
+                </div>
+                <div class=" row d-flex  align-items-center ">
+                    <div class="col-md-6">
+                        <p class="text-truncate">Propritaire de contact:</p>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <p>{{ user.username }}</p>
+                    </div>
+                </div>
+                <div class=" row d-flex  align-items-center ">
+                    <div class="col-md-6">
+                        <p class="text-truncate">Compte  de contact:</p>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <p>{{ user.role.name }}</p>
+                    </div>
+                </div>
+                <div class=" row d-flex  align-items-center ">
+                    <div class="col-md-6">
+                        <p class="text-truncate">Date  de contact:</p>
+                    </div>
+                    <div class="col-md-6 text-right">
+                     
+                        <p>{{ user.dateCreated | date:'yyyy-MM-dd' }} </p>
+                    </div>
+                </div>
+                <div class=" row d-flex  align-items-center ">
+                    <div class="col-md-6">
+                        <p class="text-truncate">Satuts du user:</p>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <p>{{ user.enabled }} </p>
+                    </div>
+                </div>
+                
+                <div class="row d-flex  align-items-center">
+                    <div class="col-md-6">
+                        <p class="text-truncate">Numéro de téléphone:</p>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <p>{{ user.tel }} </p>
+                    </div>
+                </div>
+            </div>
+         
+        </div>
+
+        <div class="col-lg-8 col2 pt-4 " style="overflow-y: auto;">
+      
+            <!-- Placeholder for component content -->
+    <div *ngIf="selectedComponent === 'notes'">
+        <app-notes></app-notes>
+    </div>
+
+    <div *ngIf="selectedComponent === 'email'">
+        <app-emails></app-emails>
+    </div>
+
+    <div *ngIf="selectedComponent === 'tasks'">
+        <app-tasks></app-tasks>
+    </div>
+
+    <div *ngIf="selectedComponent === 'meeting'">
+        <app-meetings></app-meetings>
+    </div>
+            
+
+        </div>
+
+    </div>
+</div>
+
+</div>

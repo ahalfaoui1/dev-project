@@ -1,0 +1,83 @@
+
+<div class="container-fluid">
+
+  <div class="wrapper p-4">
+    <div class="logo text-center  d-flex  justify-content-center">
+      <img class="img-fluid" [attr.src]="'assets/logo.png'" width="10px" height="10px" alt="logo">
+  </div>
+    <hr>
+    <div class="text-center mt-2 mb-2 name">
+        S'authentifier
+    </div>
+    <ng-container *ngIf="!isLoggedIn">
+      <form name="form" class=" px-3 mt-0" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+   
+        <div class="form-field pb-0 align-items-center">
+          <div class="form-group w-100">
+            <label for="username" class="lebel-text ">Nom d'utilisateur :</label>
+            <input
+              type="text"
+              class="form-control input-lign"
+              name="username"
+              [(ngModel)]="form.username"
+              required
+              #username="ngModel"
+              placeholder="Nom d'utilisateur"
+              [ngClass]="{ 'is-invalid': f.submitted && username.errors }"
+            />
+            <div *ngIf="username.errors && f.submitted" class="invalid-feedback">
+              Nom d'utilisateur est obligatoire !
+            </div>
+          </div>
+          <div class="form-group ">
+            <label for="password" class="lebel-text">Mot de passe :</label>
+              <div class="input-group d-flex ">
+                <input
+                    type="{{ showPassword ? 'text' : 'password' }}"
+                    class="form-control input-lign"
+                    name="password"
+                    placeholder="Mot de passe"
+                    [(ngModel)]="form.password"
+                    required
+                    minlength="6"
+                    #password="ngModel"
+                    [ngClass]="{ 'is-invalid': f.submitted && password.errors, 'show-password': showPassword }"
+                />
+                <button class="btn btn-hidden px-3" type="button" (click)="showPassword = !showPassword">
+                  <i class="fas" [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"></i>
+              </button>
+              
+              
+            </div>
+            <div *ngIf="password.errors && f.submitted" class="invalid-feedback">
+                <div *ngIf="password.errors['required']">Le mot de passe est obligatoire!</div>
+                <div *ngIf="password.errors['minlength']">Le mot de passe doit contenir au moins 6 caretaires</div>
+            </div>
+        </div>
+          
+        </div>
+        <div class="d-flex align-items-center link py-3">
+          <div class="link lebelpwd-text mr-3" routerLink="/reset-password" style="color: #2B1F91;">Mot de passe oublié ?</div>
+          <div class="link lebelpwd-text d-flex align-items-center">
+            <label class="custom-checkbox m-0">
+                <input type="checkbox" class="me-2 align-me">
+                Se souvenir de moi
+            </label>
+         </div>
+        
+
+          
+        
+      </div>
+      
+     
+      
+      <div class="text-center ">
+        <button class="btn  px-4  py-2  login-button">Connexion</button>
+      </div>
+    </form>
+    </ng-container>
+ 
+</div>
+
+</div>
