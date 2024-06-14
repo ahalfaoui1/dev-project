@@ -56,36 +56,90 @@ public interface TaskRepository extends CrudRepository<Task, Long> {
 	     List<Task> findTasksByContactIdAndExpirationdateAfterCurrentDate(Long contactId, Date currentDate);
 	    
 	                                   /*Count nombre de task avait type A faire*/ 
-	     @Query("SELECT COUNT(t) FROM Task t JOIN t.activity a JOIN a.contact c WHERE c.id = :contactId AND t.expirationdate = :currentDate AND t.type = 'A faire'")
+	     @Query("SELECT COUNT(t) FROM Task t JOIN t.activity a JOIN a.contact c WHERE c.id = :contactId AND FUNCTION('DATE',t.expirationdate) = :currentDate AND t.type = 'A faire'")
 	     Long countTasksByContactIdAndExpirationdateEqualCurrentDateAndTypeIsToDo(Long contactId, Date currentDate);
 	     
 	     
-	     @Query("SELECT COUNT(t) FROM Task t JOIN t.activity a JOIN a.contact c WHERE c.id = :contactId AND t.expirationdate < :currentDate AND t.type = 'A faire'")
+	     @Query("SELECT COUNT(t) FROM Task t JOIN t.activity a JOIN a.contact c WHERE c.id = :contactId AND FUNCTION('DATE',t.expirationdate) < :currentDate AND t.type = 'A faire'")
 	     Long countTasksByContactIdAndExpirationdateBeforeCurrentDateAndTypeIsToDo(Long contactId, Date currentDate);
 	     
-	     @Query("SELECT COUNT(t) FROM Task t JOIN t.activity a JOIN a.contact c WHERE c.id = :contactId AND t.expirationdate > :currentDate AND t.type = 'A faire'")
+	     @Query("SELECT COUNT(t) FROM Task t JOIN t.activity a JOIN a.contact c WHERE c.id = :contactId AND FUNCTION('DATE',t.expirationdate) > :currentDate AND t.type = 'A faire'")
 	     Long countTasksByContactIdAndExpirationdateAfterCurrentDateAndTypeIsToDo(Long contactId, Date currentDate);
 	     
 	                                 /*Count nombre de task avait type Appel*/
-	     @Query("SELECT COUNT(t) FROM Task t JOIN t.activity a JOIN a.contact c WHERE c.id = :contactId AND t.expirationdate = :currentDate AND t.type = 'Appel'")
+	     @Query("SELECT COUNT(t) FROM Task t JOIN t.activity a JOIN a.contact c WHERE c.id = :contactId AND FUNCTION('DATE',t.expirationdate) = :currentDate AND t.type = 'Appel'")
 	     Long countTasksByContactIdAndExpirationdateEqualCurrentDateAndTypeIsToDoA(Long contactId, Date currentDate);
 	     
 	     
-	     @Query("SELECT COUNT(t) FROM Task t JOIN t.activity a JOIN a.contact c WHERE c.id = :contactId AND t.expirationdate < :currentDate AND t.type = 'Appel'")
+	     @Query("SELECT COUNT(t) FROM Task t JOIN t.activity a JOIN a.contact c WHERE c.id = :contactId AND FUNCTION('DATE',t.expirationdate) < (:currentDate) AND t.type = 'Appel'")
 	     Long countTasksByContactIdAndExpirationdateBeforeCurrentDateAndTypeIsToDoA(Long contactId, Date currentDate);
 	     
-	     @Query("SELECT COUNT(t) FROM Task t JOIN t.activity a JOIN a.contact c WHERE c.id = :contactId AND t.expirationdate > :currentDate AND t.type = 'Appel'")
+	     @Query("SELECT COUNT(t) FROM Task t JOIN t.activity a JOIN a.contact c WHERE c.id = :contactId AND FUNCTION('DATE',t.expirationdate) > :currentDate AND t.type = 'Appel'")
 	     Long countTasksByContactIdAndExpirationdateAfterCurrentDateAndTypeIsToDoA(Long contactId, Date currentDate);
 	     
 	                                  /*Count nombre de task avait type EMAIL*/
-	     @Query("SELECT COUNT(t) FROM Task t JOIN t.activity a JOIN a.contact c WHERE c.id = :contactId AND t.expirationdate = :currentDate AND t.type = 'E-mail'")
+	     @Query("SELECT COUNT(t) FROM Task t JOIN t.activity a JOIN a.contact c WHERE c.id = :contactId AND FUNCTION('DATE',t.expirationdate) = :currentDate AND t.type = 'E-mail'")
 	     Long countTasksByContactIdAndExpirationdateEqualCurrentDateAndTypeIsToDoE(Long contactId, Date currentDate);
 	     
 	     
-	     @Query("SELECT COUNT(t) FROM Task t JOIN t.activity a JOIN a.contact c WHERE c.id = :contactId AND t.expirationdate < :currentDate AND t.type = 'E-mail'")
+	     @Query("SELECT COUNT(t) FROM Task t JOIN t.activity a JOIN a.contact c WHERE c.id = :contactId AND FUNCTION('DATE',t.expirationdate) < :currentDate AND t.type = 'E-mail'")
 	     Long countTasksByContactIdAndExpirationdateBeforeCurrentDateAndTypeIsToDoE(Long contactId, Date currentDate);
 	     
-	     @Query("SELECT COUNT(t) FROM Task t JOIN t.activity a JOIN a.contact c WHERE c.id = :contactId AND t.expirationdate > :currentDate AND t.type = 'E-mail'")
+	     @Query("SELECT COUNT(t) FROM Task t JOIN t.activity a JOIN a.contact c WHERE c.id = :contactId AND FUNCTION('DATE',t.expirationdate) > :currentDate AND t.type = 'E-mail'")
 	     Long countTasksByContactIdAndExpirationdateAfterCurrentDateAndTypeIsToDoE(Long contactId, Date currentDate);
 	     
+	     
+	     
+                                       /*Count nombre de task avait EMAIL Non Repondu*/
+	     @Query("SELECT COUNT(t) FROM Task t JOIN t.activity a JOIN a.contact c WHERE c.id = :contactId AND a.type = 'Tasks' AND t.queue = 'En attente' AND t.type = 'E-mail'")
+	     int countEmailActivitiesWithQueueRepondu(Long contactId);
+	     
+	     
+	                  /*----------------------Count  TASKS TERMINER AUJOURD HUI-----------------*/
+
+	     
+	                                   /*Count nombre de task qui sont A FAIRE TERMINER AUJOURDHUI*/
+	     @Query("SELECT COUNT(t) FROM Task t JOIN t.activity a JOIN a.contact c WHERE c.id = :contactId AND FUNCTION('DATE',t.expirationdate) = :currentDate AND t.type = 'A faire' AND t.queue = 'Terminer'")
+	     Long countTasksByContactIdAndEqualCurrentDateAndTypeIsToDoAndQueue(Long contactId, Date currentDate);
+
+	                                   /*Count nombre de task qui sont EMAIL TERMINER AUJOURDHUI*/
+	     @Query("SELECT COUNT(t) FROM Task t JOIN t.activity a JOIN a.contact c WHERE c.id = :contactId AND FUNCTION('DATE',t.expirationdate) = :currentDate AND t.type = 'E-mail' AND t.queue = 'Terminer'")
+	     Long countTasksByContactIdTypeIsToDoANDmailTerminer(Long contactId, Date currentDate);
+	     
+	                                  /*Count nombre de task qui sont APPELl TERMINER AUJOURDHUI*/
+	     @Query("SELECT COUNT(t) FROM Task t JOIN t.activity a JOIN a.contact c WHERE c.id = :contactId AND FUNCTION('DATE',t.expirationdate) = :currentDate AND t.type = 'Appel' AND t.queue = 'Terminer'")
+	     Long countTasksByContactIdTypeIsToDoANDAPPELTerminer(Long contactId, Date currentDate);
+ 
+	     
+	     
+	                   /*----------------------Count  TASKS TERMINER BEFORE-----------------*/
+	     
+                          /*Count nombre de task qui sont A FAIRE TERMINER BEFORE*/
+         @Query("SELECT COUNT(t) FROM Task t JOIN t.activity a JOIN a.contact c WHERE c.id = :contactId AND FUNCTION('DATE',t.expirationdate) < :currentDate AND t.type = 'A faire' AND t.queue = 'Terminer'")
+         Long countTasksByContactIdTypeIsToDoAndQueueBEFORE(Long contactId, Date currentDate);
+
+                          /*Count nombre de task qui sont EMAIL TERMINER BEFORE*/
+         @Query("SELECT COUNT(t) FROM Task t JOIN t.activity a JOIN a.contact c WHERE c.id = :contactId AND FUNCTION('DATE',t.expirationdate) < :currentDate AND t.type = 'E-mail' AND t.queue = 'Terminer'")
+	     Long countTasksByContactIdTypeIsToDoANDmailTerminerBEFORE(Long contactId, Date currentDate);
+	     
+                           /*Count nombre de task qui sont APPELl TERMINER BEFORE*/
+         @Query("SELECT COUNT(t) FROM Task t JOIN t.activity a JOIN a.contact c WHERE c.id = :contactId AND FUNCTION('DATE',t.expirationdate) < :currentDate AND t.type = 'Appel' AND t.queue = 'Terminer'")
+         Long countTasksByContactIdTypeIsToDoANDAPPELTerminerBEFORE(Long contactId, Date currentDate);
+
+
+                    /*-------------------------Count  TASKS TERMINER AFTER-----------------------*/
+         
+                            /*Count nombre de task qui sont A FAIRE TERMINER AFTER*/
+
+         @Query("SELECT COUNT(t) FROM Task t JOIN t.activity a JOIN a.contact c WHERE c.id = :contactId AND FUNCTION('DATE',t.expirationdate) > :currentDate AND t.type = 'A faire' AND t.queue = 'Terminer'")
+	     Long countTasksTypeIsToDoAndQueueAfter(Long contactId, Date currentDate);
+
+                            /*Count nombre de task qui sont EMAIL TERMINER AFTER*/
+         @Query("SELECT COUNT(t) FROM Task t JOIN t.activity a JOIN a.contact c WHERE c.id = :contactId AND FUNCTION('DATE',t.expirationdate) > :currentDate AND t.type = 'E-mail' AND t.queue = 'Terminer'")
+         Long countTasksmailTerminerBEFORE(Long contactId, Date currentDate);
+
+                            /*Count nombre de task qui sont APPELl TERMINER BEFORE*/
+        @Query("SELECT COUNT(t) FROM Task t JOIN t.activity a JOIN a.contact c WHERE c.id = :contactId AND FUNCTION('DATE',t.expirationdate) > :currentDate AND t.type = 'Appel' AND t.queue = 'Terminer'")
+        Long countTasksAPPELTerminerAFTER(Long contactId, Date currentDate);
+
 }

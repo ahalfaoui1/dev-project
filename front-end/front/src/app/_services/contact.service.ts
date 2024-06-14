@@ -17,6 +17,10 @@ export class ContactService {
   private API_URL = environment.apiUrl + 'api/contacts/';
   private API_URL1 = environment.apiUrl + 'contacts/';
   private API_URLN = environment.apiUrl + 'api/contacts/new';
+  private url ='http://localhost:9090/tasks/';
+  private url1 ='http://localhost:9090/';
+
+  
   private pageSize = 12;
   Contacts: any[] = [];
   totalPages: number = 0;
@@ -81,6 +85,33 @@ selectedFileName: string = '';
     const apiUrl = `${this.API_URL1}search/findContactsWithActivities`;
     console.log('listContactIdwithActivity',this.http.get(apiUrl, this.httpOptions))
     return this.http.get(apiUrl, this.httpOptions);
+  }
+
+
+  countContactsAfter7Days(){
+    const url = `${this.API_URL1}search/countContactsCreatedBefore7DaysAgo`;
+       return this.http.get(url, httpOptions);
+
+  }
+
+  countEmailnonRepondu(idContact:number){
+    const url = `${this.url}search/countEmailActivitiesWithQueueRepondu?contactId=${idContact}`;
+    return this.http.get(url, httpOptions);
+  }
+
+  countNouveauxLeads(){
+    const url = `${this.url1}contacts/search/countNewContactsCreatedToday`;
+    return this.http.get(url, httpOptions);
+  }
+
+  countEncoursLeads(){
+    const url = `${this.url1}contacts/search/countEncoursLeads`;
+    return this.http.get(url, httpOptions);
+  }
+
+  countConnectedLeads(){
+    const url = `${this.url1}contacts/search/countConnectLeads`;
+    return this.http.get(url, httpOptions);
   }
 
 }

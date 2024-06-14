@@ -41,7 +41,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { ProspectionsComponent } from './prospections/prospections.component';
 import { ProduitsComponent } from './produits/produits.component';
 import { TransactionsComponent } from './transactions/transactions.component';
-import { FullCalendarModule } from '@fullcalendar/angular';
+
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { RecapComponent } from './prospections/recap/recap.component';
 import { LeadsComponent } from './prospections/leads/leads.component';
@@ -51,10 +51,16 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import {  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 import { DropdownModule } from 'primeng/dropdown';
+import { ProgressBarModule } from 'primeng/progressbar';
+// For dynamic progressbar demo
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 
 @NgModule({
@@ -108,11 +114,14 @@ import { DropdownModule } from 'primeng/dropdown';
     TooltipModule.forRoot(),
     
     
-    DropdownModule
+    DropdownModule,
+    ProgressBarModule,
+    ToastModule,
+     
  
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [httpInterceptorProviders, provideAnimationsAsync(),DatePipe],
+  providers: [httpInterceptorProviders, provideAnimationsAsync(),DatePipe,MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

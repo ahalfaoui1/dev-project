@@ -38,21 +38,27 @@
         <hr class="line-bg mt-2 mb-2">
         <div class="d-flex justify-content-between mb-2">
           <p class="task-label pl-0">Progression de la tâche</p>
-          <div class="col-auto">
-            <select class="form-select select-css" aria-label="Select date">
-              <option selected>Aujourd'hui</option>
-              <option>Hier</option>
-              <option>Demain</option>
+          
+          <div class="col-auto" >                                      
+            <select class="form-select select-css" aria-label="Select date" (change)="onDateSelection($event)">
+              <option value="today" selected >Aujourd'hui</option>
+              <option value="yesterday">Hier</option>
+              <option value="tomorrow">Demain</option>
               <!-- Ajoutez d'autres options au besoin -->
             </select>
           </div>
+        
         </div>
 
         <div class="row g-3 px-3">
           <div class="d-flex justify-content-between mb-0">
             <p class="label-details  pl-0">Liste de choses à faire</p>
-            <p class="label-details1"><i class="fa-solid fa-check"></i> &nbsp; 0 terminées sur 0</p>
+            <p class="label-details1"><i class="fa-solid fa-check"></i> &nbsp; {{countA_FaireTermine}} terminées sur {{countparRapport}}</p>
           </div>
+
+       
+        
+
 
           <div class="progress  px-0  mt-0 ">
 
@@ -61,16 +67,17 @@
           </div>
           <div class="d-flex justify-content-between  mb-0">
             <p class="label-details">E-mails</p>
-            <p class="label-detail2" style="color: #A84343;"><i class="fa-solid fa-xmark"></i> &nbsp; 0 terminées sur 1
+            <p class="label-detail2" style="color: #A84343;"><i class="fa-solid fa-xmark"></i> &nbsp; {{countEmailTerminer}} terminées sur {{countparRapporEmail}}
             </p>
           </div>
+        
           <div class="progress px-0  mt-0">
             <div class="progress-bar bg-danger bg-col-barmail" role="progressbar" style="width: 100%"
               aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
           <div class="d-flex justify-content-between mb-0">
             <p class="label-details">Appels</p>
-            <p class="label-details1"> &nbsp; 0 terminées sur 0</p>
+            <p class="label-details1"> &nbsp; {{countAppelTerminer}} terminées sur {{countparRapportAppel}}</p>
           </div>
           <div class="progress px-0 mt-0">
             <div class="progress-bar bg-success bg-col-bar" role="progressbar" style="width: 100%" aria-valuenow="25"
@@ -156,57 +163,57 @@
 
 
 
-            <!--Depart TEST-->
+          <!--Depart TEST-->
 
-            <div class="card py-2 mr-3 mt-4">
-              <div class="card-body">
-                <h5 class="card-text-tache text-center">Tâches dues aujourd'hui (3)</h5>
-                <hr>
-                <div class="card-text">
-                  <div class=" px-0">
-                    <div class=" align-items-start">
-                      <div class="row px-0">
-                        <div class="col-lg-12 col-md-12 ">
-                          <div class="card border-0 ">
-                            <div class="card-body">
-                              <div class="d-flex align-items-center mb-3 ">
-                                <i class="fa-solid fa-phone mr-3 text-primary"></i>
-                                <p class="w-100 mb-0 pb-0" style="color: #2B1F91;">
-                                  <b>Appels</b> <br>
-                                  {{resultCountEqualAPPEL}} tâches d'appels
-                                </p>
-                              </div>
-  
-                              <div class="d-flex align-items-center mb-3">
-                                <i class="fa-regular fa-envelope mr-3 text-primary"></i>
-                                <p class="w-100 mb-0 pb-0" style="color: #2B1F91;">
-                                  <b>E-mails</b> <br>
-                                  {{resultCountEqualEMAIL}} tâches d'e-mails
-                                </p>
-                              </div>
-  
-                              <div class="d-flex align-items-center">
-                                <i class="fa-solid fa-check mr-3 text-primary"></i>
-                                <p class="w-100 mb-0 pb-0" style="color: #2B1F91;">
-                                  <b>Liste de choses à faire</b> <br>
-                                  {{resultCountEqualAFAIRE}} Vous avez complété toutes vos tâches à faire
-                                </p>
-                              </div>
+          <div class="card py-2 mr-3 mt-4">
+            <div class="card-body">
+              <h5 class="card-text-tache text-center">Tâches dues aujourd'hui </h5>
+              <hr>
+              <div class="card-text">
+                <div class=" px-0">
+                  <div class=" align-items-start">
+                    <div class="row px-0">
+                      <div class="col-lg-12 col-md-12 ">
+                        <div class="card border-0 ">
+                          <div class="card-body">
+                            <div class="d-flex align-items-center mb-3 ">
+                              <i class="fa-solid fa-phone mr-3 text-primary"></i>
+                              <p class="w-100 mb-0 pb-0" style="color: #2B1F91;">
+                                <b>Appels</b> <br>
+                                <b>{{resultCountEqualAPPEL}}</b> tâches d'appels
+                              </p>
+                            </div>
+
+                            <div class="d-flex align-items-center mb-3">
+                              <i class="fa-regular fa-envelope mr-3 text-primary"></i>
+                              <p class="w-100 mb-0 pb-0" style="color: #2B1F91;">
+                                <b>E-mails</b> <br>
+                                <b> {{resultCountEqualEMAIL}} </b>tâches d'e-mails
+                              </p>
+                            </div>
+
+                            <div class="d-flex align-items-center">
+                              <i class="fa-solid fa-check mr-3 text-primary"></i>
+                              <p class="w-100 mb-0 pb-0" style="color: #2B1F91;">
+                                <b>Liste de choses à faire</b> <br>
+                                <b>{{resultCountEqualAFAIRE}}</b> Vous avez complété toutes vos tâches à faire
+                              </p>
                             </div>
                           </div>
                         </div>
-                        <div class="col-lg-8 col-md-6 mb-4 px-3">
-                        </div>
+                      </div>
+                      <div class="col-lg-8 col-md-6 mb-4 px-3">
                       </div>
                     </div>
                   </div>
                 </div>
-                <hr>
-                <p class="card-text-t px-3 text-center"><small>Commencer l'ensemble des 3 tâches en retard</small></p>
               </div>
+              <hr>
+              <p class="card-text-t px-3 text-center"><small>Commencer l'ensemble des 3 tâches en retard</small></p>
             </div>
-  
-            <!--Final TEST-->
+          </div>
+
+          <!--Final TEST-->
 
 
 
@@ -227,7 +234,7 @@
           <div class="card py-2 mr-3 mt-4">
 
             <div class="card-body">
-              <h5 class="card-text-tache text-center">Tâches en retard (3)</h5>
+              <h5 class="card-text-tache text-center">Tâches en retard </h5>
               <hr>
               <div class="card-text">
 
@@ -242,7 +249,7 @@
                               <i class="fa-solid fa-phone mr-3 text-primary"></i>
                               <p class="w-100 mb-0 pb-0" style="color: #2B1F91;">
                                 <b>Appels</b> <br>
-                                {{resultCountBeforeAPPEL}} tâches d'appels
+                                <b> {{resultCountBeforeAPPEL}}</b> tâches d'appels
                               </p>
                             </div>
 
@@ -250,7 +257,7 @@
                               <i class="fa-regular fa-envelope mr-3 text-primary"></i>
                               <p class="w-100 mb-0 pb-0" style="color: #2B1F91;">
                                 <b>E-mails</b> <br>
-                                {{resultCountBeforeEMAIL}} tâches d'e-mails
+                                <b> {{resultCountBeforeEMAIL}}</b> tâches d'e-mails
                               </p>
                             </div>
 
@@ -258,7 +265,7 @@
                               <i class="fa-solid fa-check mr-3 text-primary"></i>
                               <p class="w-100 mb-0 pb-0" style="color: #2B1F91;">
                                 <b>Liste de choses à faire</b> <br>
-                                {{resultCountBeforeAFAIRE}} Vous avez complété toutes vos tâches à faire
+                                <b>{{resultCountBeforeAFAIRE}}</b> Vous avez complété toutes vos tâches à faire
                               </p>
                             </div>
 
@@ -285,7 +292,7 @@
 
           <div class="card py-2 mr-3 mt-4">
             <div class="card-body">
-              <h5 class="card-text-tache text-center">Tâches dues demain (3)</h5>
+              <h5 class="card-text-tache text-center">Tâches dues demain </h5>
               <hr>
               <div class="card-text">
                 <div class=" px-0">
@@ -298,7 +305,7 @@
                               <i class="fa-solid fa-phone mr-3 text-primary"></i>
                               <p class="w-100 mb-0 pb-0" style="color: #2B1F91;">
                                 <b>Appels</b> <br>
-                                {{resultCountAfterAPPEL}} tâches d'appels
+                                <b> {{resultCountAfterAPPEL}}</b> tâches d'appels
                               </p>
                             </div>
 
@@ -306,7 +313,7 @@
                               <i class="fa-regular fa-envelope mr-3 text-primary"></i>
                               <p class="w-100 mb-0 pb-0" style="color: #2B1F91;">
                                 <b>E-mails</b> <br>
-                                {{resultCountAfterEMAIL}} tâches d'e-mails
+                                <b>{{resultCountAfterEMAIL}}</b> tâches d'e-mails
                               </p>
                             </div>
 
@@ -314,7 +321,7 @@
                               <i class="fa-solid fa-check mr-3 text-primary"></i>
                               <p class="w-100 mb-0 pb-0" style="color: #2B1F91;">
                                 <b>Liste de choses à faire</b> <br>
-                                {{resultCountAfterAFAIRE}} Vous avez complété toutes vos tâches à faire
+                                <b> {{resultCountAfterAFAIRE}}</b> Vous avez complété toutes vos tâches à faire
                               </p>
                             </div>
                           </div>
@@ -418,7 +425,8 @@
 
       <div *ngIf="activeTab === 'activities'" class="tab-pane active">
         <div class="d-flex  g-1">
-          <div class="card  py-2">
+
+          <div class="card  py-2 mr-3 mt-4">
             <div class="card-body ">
               <h5 class="card-texts text-center">Activités suggérées (1) </h5>
               <hr class="hr-line">
@@ -433,7 +441,7 @@
                             <i class="fa-solid fa-user mr-3 text-primary"></i>
                             <p class="w-100 mb-0 pb-0" style="font-size: 16px;color: #2B1F91;">
                               <b>Nouveaux contacts</b> <br>
-                              1contact vous a ete <br> attribue recament
+                              <b>{{countContactBefore7Day}}</b> contact vous a ete <br> attribue recament
                             </p>
                           </div>
 
@@ -472,6 +480,127 @@
               <p class="card-text-t text-center px-3"><small>Faite vous de nouveaux contacts&nbsp &nbsp</small></p>
             </div>
           </div>
+
+          <!-- 22222222222222222222222222222222222222222222222222222222222222222222 -->
+
+          <div class="card  py-2 mr-3 mt-4">
+            <div class="card-body ">
+              <h5 class="card-texts text-center">E-mail non répondu  </h5>
+              <hr class="hr-line">
+              <div class=" px-0">
+                <div class=" align-items-start">
+                  <div class="row px-0">
+                    <div class="col-lg-12 col-md-12 ">
+                      <div class="card border-0 ">
+                        <div class="card-body">
+
+                          <div class="d-flex align-items-center mb-3 mt-4 ">
+                            <i class="fa-solid fa-user mr-3 text-primary"></i>
+                            <p class="w-100 mb-0 pb-0" style="font-size: 16px;color: #2B1F91;">
+                              <b>E-mail non répondu</b> <br>
+                              <b>{{countEmailsnonRepondu}}</b> Email vous avez <br> non répondu
+                            </p>
+                          </div>
+
+                          <div class="d-flex align-items-center mb-3">
+                            <!-- <i class="fa-regular fa-envelope mr-3 text-primary"></i>
+                  <p class="w-100 mb-0 pb-0" style="color: #2B1F91;">
+                    E-mails <br>
+                    2 tâches d'e-mails
+                  </p> -->
+                            <br>
+                          </div>
+
+                          <div class="d-flex align-items-center">
+                            <!-- <i class="fa-solid fa-check mr-3 text-primary"></i>
+                  <p class="w-100 mb-0 pb-0" style="color: #2B1F91;">
+                    Liste de choses à faire <br>
+                    Vous avez complété toutes vos tâches à faire
+                  </p> -->
+                            <br>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-8 col-md-6 mb-4 px-3">
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+              <br><br>
+              <hr>
+
+              <p class="card-text-t text-center px-3"><small>Faite vous de nouveaux contacts&nbsp &nbsp</small></p>
+            </div>
+          </div>
+
+          <!-- ----------------------------------------------------------------------- -->
+
+          <!-- 3333333333333333333333333333333333333333333333333333333333333333333333 -->
+          <div class="card  py-2 mr-3 mt-4">
+            <div class="card-body ">
+              <h5 class="card-texts text-center">Réunion en attente  </h5>
+              <hr class="hr-line">
+              <div class=" px-0">
+                <div class=" align-items-start">
+                  <div class="row px-0">
+                    <div class="col-lg-12 col-md-12 ">
+                      <div class="card border-0 ">
+                        <div class="card-body">
+
+                          <div class="d-flex align-items-center mb-3 mt-4 ">
+                            <i class="fa-solid fa-user mr-3 text-primary"></i>
+                            <p class="w-100 mb-0 pb-0" style="font-size: 16px;color: #2B1F91;">
+                              <b>Réunion en attente</b> <br>
+                              <b>--</b> réuinion vous avez <br> en attente
+                            </p>
+                          </div>
+
+                          <div class="d-flex align-items-center mb-3">
+                            <!-- <i class="fa-regular fa-envelope mr-3 text-primary"></i>
+                  <p class="w-100 mb-0 pb-0" style="color: #2B1F91;">
+                    E-mails <br>
+                    2 tâches d'e-mails
+                  </p> -->
+                            <br>
+                          </div>
+
+                          <div class="d-flex align-items-center">
+                            <!-- <i class="fa-solid fa-check mr-3 text-primary"></i>
+                  <p class="w-100 mb-0 pb-0" style="color: #2B1F91;">
+                    Liste de choses à faire <br>
+                    Vous avez complété toutes vos tâches à faire
+                  </p> -->
+                            <br>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-8 col-md-6 mb-4 px-3">
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+              <br><br>
+              <hr>
+
+              <p class="card-text-t text-center px-3"><small>Faite vous de nouveaux contacts&nbsp &nbsp</small></p>
+            </div>
+          </div>
+
+          <!-- ----------------------------------------------------------------------- -->
+
+
+
+
         </div>
       </div>
 
@@ -481,7 +610,7 @@
           <div class="card py-2 mr-2 mt-4">
 
             <div class="card-body">
-              <h5 class="card-text-tache text-center">Nouveaux (1)</h5>
+              <h5 class="card-text-tache text-center">Nouveaux ({{countNouveauLeads}})</h5>
               <hr>
               <div class="card-text">
 
@@ -536,7 +665,7 @@
           <div class="card py-2 mr-2 mt-4">
 
             <div class="card-body">
-              <h5 class="card-text-tache text-center">A lessai (0)</h5>
+              <h5 class="card-text-tache text-center">A lessai ({{countEnCoursLeads}})</h5>
               <hr>
               <div class="card-text">
 
@@ -586,7 +715,7 @@
           <div class="card py-2 mr-2 mt-4">
 
             <div class="card-body">
-              <h5 class="card-text-tache text-center">Connect (0)</h5>
+              <h5 class="card-text-tache text-center">Connect ({{countConnectLeads}})</h5>
               <hr>
               <div class="card-text">
 

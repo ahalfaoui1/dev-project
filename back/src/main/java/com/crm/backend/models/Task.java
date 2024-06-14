@@ -33,6 +33,8 @@ public class Task{
     /*
     @Temporal(TemporalType.TIMESTAMP)
     */
+    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date expirationdate;
     
 
@@ -42,6 +44,7 @@ public class Task{
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     */
+    @Temporal(TemporalType.TIMESTAMP)
     private Date rminder;
     
 	

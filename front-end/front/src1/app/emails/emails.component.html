@@ -1,0 +1,252 @@
+<div class="d-flex justify-content-between align-items-center px-2 pb-0  text-center">
+
+    <p class="date-note mt-3" style="color:#2B1F91"><strong>24 janvier</strong></p>
+
+    <button class="btn btn-colorbtn2 px-3 py-2" (click)="openModal(createmail)">Créer un
+        e-mail</button>
+    <div class="modal fade " id="createmailsModal" tabindex="-1" role="dialog" aria-labelledby="createmailsModal"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered " role="document">
+            <div class="modal-content modal-back ">
+                <ng-template #createmail>
+                    <div class="modal-header p-2">
+                        <h5 class="modal-title" id="composeEmailModalLabel">Créer un E-mail</h5>
+                        <button type="button" class="close" (click)="closeModal()">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+
+                    </div>
+                    <hr class="m-2">
+
+                    <div class="modal-body  ">
+                        <!-- Your email composition form can go here -->
+
+                        <div class="px-2 style-text">
+                            <div class="d-flex style-text mb-2">
+                                <p class="style-text  col-sm-2" style="font-weight: bold;">A</p>
+                                <input [(ngModel)]="formData.sender" type="text" id="sender" name="sender"
+                                    class="form-control col-5 input-bg btn-sm-3 px-3 round-input mr-3" />
+                            </div>
+
+                            <div class="d-flex style-text  ">
+                                <p class="style-text  col-sm-2" style="font-weight: bold;">De</p>
+                                <p class="style-text">Group Berneso (<a
+                                        href="mailto:a.souidi@berneso.com">a.souidiberneso.com</a>)</p>
+                            </div>
+                            <hr class="m-2">
+                            <div class="d-flex style-text  ">
+                                <p class="style-text  col-sm-2 p-0" style="font-weight: bold;">Sujet</p>
+                                <p class="style-text  p-0">Prospection</p>
+                            </div>
+                            <hr class="m-2">
+                        </div>
+
+
+
+
+                        <div class="form-group text-left mb-0 ">
+
+                            <textarea [(ngModel)]="formData.description" contenteditable="true" class="form-control"
+                                id="description" name="description" placeholder="votre commentaire"
+                                rows="7">Tapez Votre Commentaire</textarea>
+
+                            <div id="emailToolbar" class="barrejoint ">
+                                <button type="button" class="btn"
+                                    onclick="document.execCommand('bold', false, null)"><strong>B</strong></button>
+                                <button type="button" class="btn"
+                                    onclick="document.execCommand('italic', false, null)"><em>I</em></button>
+                                <button type="button" class="btn barrejoin"
+                                    onclick="document.execCommand('underline', false, null)"><u>U</u></button>
+
+                                <!-- New buttons for Joint File and Joint Photo -->
+                                <button type="button" class="btn" onclick="attachFile()"><i
+                                        class="fa-regular fa-file"></i></button>
+                                <button type="button" class="btn" onclick="attachPhoto()"><i
+                                        class="fa-regular fa-image"></i></button>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer text-center">
+                        <button type="button" class="btn  btn-colorbtn3 px-3 py-1 text-center mx-auto"
+                            (click)="submit(id, formData)">Envoyer</button>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<div class="col-back mt-3 py-4" (click)="openEditModal(editemail)"
+    *ngFor="let email of Email_Entreprise; let i = index">
+
+
+    <form (ngSubmit)="modifierMail(index, email)">
+        <div class="modal fade ">
+            <div class="modal-dialog modal-dialog-centered " role="document">
+                <div class="modal-content modal-back ">
+                    <ng-template #editemail>
+                        <div class="modal-header p-2">
+                            <h5 class="modal-title" id="composeEmailModalLabel">Mettre à jour E-mail</h5>
+                            <button type="button" (click)="closeModal()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+
+                        </div>
+                        <hr class="m-2">
+
+                        <div class="modal-body  ">
+                            <!-- Your email composition form can go here -->
+
+                            <div class="px-2 style-text">
+                                <div class="d-flex style-text mb-2">
+                                    <p class="style-text  col-sm-2" style="font-weight: bold;">A</p>
+                                    <input [(ngModel)]="email.sender" type="text" id="sender" name="sender"
+                                        class="form-control col-5 input-bg btn-sm-3 px-3 round-input mr-3"
+                                        [disabled]="inputDisabled" />
+                                </div>
+
+                                <div class="d-flex style-text  ">
+                                    <p class="style-text  col-sm-2" style="font-weight: bold;">De</p>
+                                    <p class="style-text ">Group Berneso (<a
+                                            href="mailto:a.souidi@berneso.com">a.souidiberneso.com</a>)</p>
+                                </div>
+                                <hr class="m-2">
+                                <div class="d-flex style-text  ">
+                                    <p class="style-text  col-sm-2 p-0" style="font-weight: bold;">Sujet</p>
+                                    <input [(ngModel)]="email.subject" type="text" id="subject" name="subject"
+                                        class="form-controls col-5 input-bg btn-sm-3 px-3 round-input mr-3" />
+                                </div>
+                                <hr class="m-2">
+                            </div>
+
+
+
+
+                            <div class="form-group text-left mb-0 ">
+
+                                <textarea [(ngModel)]="email.description" 
+                                    contenteditable="true" class="form-control" id="description" name="description"
+                                    placeholder="votre commentaire" rows="7">Tapez Votre Commentaire</textarea>
+
+                                <div id="emailToolbar" class="barrejoint ">
+                                    <button type="button" class="btn"
+                                        onclick="document.execCommand('bold', false, null)"><strong>B</strong></button>
+                                    <button type="button" class="btn"
+                                        onclick="document.execCommand('italic', false, null)"><em>I</em></button>
+                                    <button type="button" class="btn barrejoin"
+                                        onclick="document.execCommand('underline', false, null)"><u>U</u></button>
+
+                                    <!-- New buttons for Joint File and Joint Photo -->
+                                    <button type="button" class="btn" onclick="attachFile()"><i
+                                            class="fa-regular fa-file"></i></button>
+                                    <button type="button" class="btn" onclick="attachPhoto()"><i
+                                            class="fa-regular fa-image"></i></button>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer text-center">
+                            <button type="button" class="btn  btn-colorbtn3 px-3 py-1 text-center mx-auto"
+                                (click)="modifierMail(i,email)">Mettre a jour</button>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- fin du modal -->
+        <div class="px-4">
+            <div class="d-flex justify-content-between">
+                <div class="d-flex ">
+                    <img class="avatar-mail"
+                        src="https://www.shutterstock.com/image-vector/user-profile-icon-vector-avatar-600nw-2247726673.jpg"
+                        alt="User Image" width="50" height="50">
+                    <div class="ml-3 mb-0">
+                        <p class="m-0 name-company">Berneso Groupe</p>
+                        <p class="mt-2 email-company">à {{email.recipient}} <i style="color: #2B1F91 !important;"
+                                class="fa-solid fa-angle-down"></i>
+                        </p>
+                    </div>
+                </div>
+                <div class="  ">
+                    <button class="btn btn-colorbtn5  px-3 mr-2 ">Réponse</button>
+                    <button class="btn btn-colorbtn5  px-3 mr-2">Transfert</button>
+                    <button class="btn btn-colorbtn5  px-3 ">Supprimer</button>
+                    <button class="btn btn-colorbtn51  px-3 ml-4">24 Janvier 2024</button>
+                </div>
+
+
+
+
+            </div>
+            <div class="d-flex justify-content-between align-items-center pt-3 text-center">
+                <div class="align-items-center">
+                    <p class="date-note align-items-center mb-0 " style="color: #2B1F91;">{{email.description}}</p>
+                </div>
+                <div>
+                    <a class="px-2 py-0 mr-3 btn-delete" href="#">
+                        <img src="./assets/octicon_trashcan-16.png" class="img-fluid" alt="">
+                        <!--<i class="fa-solid fa-trash"></i>-->
+                    </a>
+                    <!-- <button class="px-2 py-0 " ata-toggle="modal" data-target="#createmailsModalmettreajours">mettre a jour
+             
+                </button> -->
+
+
+                    <!--debut du modal mettre a jours-->
+
+
+
+
+                    <!--fin du modal mettre a jours-->
+
+
+
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- <div class="backoverview">
+        <div class="container-fluid">
+            <div class=" py-4 ">
+                <table class="table">
+                    <thead>
+                        <tr>
+    
+                            <th scope="col">Sujet</th>
+                            <th scope="col">Expéditeur</th>
+                            <th scope="col">Recipient</th>
+                            <th scope="col">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let email of Email_Entreprise">
+                        <tr>
+    
+                            <td>{{email.subject}}</td>
+                            <td>{{email.sender}}</td>
+                            <td>{{email.recipient}}</td>
+                            <td>{{email.description}}</td>
+                        </tr>
+    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div> -->
+    </form>
+
+</div>

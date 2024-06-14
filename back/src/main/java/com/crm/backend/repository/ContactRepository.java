@@ -14,11 +14,20 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import com.crm.backend.models.Contact;
 import com.crm.backend.models.User;
 
+import jakarta.persistence.PersistenceContext;
+import java.util.Calendar;
+
+
+
+import java.util.Date;
+
+
 
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials="true")
 @Repository
 public interface ContactRepository extends CrudRepository<Contact, Long> {
+	
 	
 	List<Contact> findByStatus(String status);
   
@@ -48,6 +57,37 @@ public interface ContactRepository extends CrudRepository<Contact, Long> {
 	 
 	 @Query("SELECT DISTINCT c FROM Contact c JOIN c.activities a")
 	    List<Contact> findContactsWithActivities();
-	 	 
+	 
+	 
+	 /*
+	 @Query(value = "SELECT COUNT(*) FROM CRM_CONTACTS WHERE date_created < NOW()", nativeQuery = true)
+	    int countContactsCreatedBeforeNow();
+	 */
+	 
+	 /*
+	 ----------------------------------Requette pour COUNT LEADS APRES 7 JOURS--------------------------------------------------
+	 */
+	 @Query(value = "SELECT COUNT(*) FROM CRM_CONTACTS WHERE date_created >= NOW() - INTERVAL '7 days'", nativeQuery = true)
+	 int countContactsCreatedBefore7DaysAgo();
+	 
+	 /*
+	 ----------------------------------Requette pour COUNT LEADS AJOUTER AUJOURD'HUI--------------------------------------------------
+	 */
+	 @Query(value = "SELECT COUNT(*) FROM CRM_CONTACTS WHERE TO_CHAR(date_created, 'YYYY-MM-DD') = TO_CHAR(NOW(), 'YYYY-MM-DD') AND status = 'New'", nativeQuery = true)
+	    int countNewContactsCreatedToday();
+	 
+	 /*
+	 ----------------------------------Requette pour COUNT LEADS STATUS EN COURS--------------------------------------------------
+	 */
+	 @Query(value = "SELECT COUNT(*) FROM CRM_CONTACTS WHERE status = 'En cours'", nativeQuery = true)
+	    int countEncoursLeads();
+	 
+	 /*
+	 ----------------------------------Requette pour COUNT LEADS STATUS CONNECTED--------------------------------------------------
+	 */
+	 @Query(value = "SELECT COUNT(*) FROM CRM_CONTACTS WHERE status = 'Connecté'", nativeQuery = true)
+	    int countConnectLeads();
+	 
+	 List<Contact> findByDateCreatedBetween(Date startDate, Date endDate);	 	 
 	
 }

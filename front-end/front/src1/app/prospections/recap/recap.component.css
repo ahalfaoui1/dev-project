@@ -1,0 +1,749 @@
+.btn-circle {
+    border: 1px solid #475D75; /* Replace with your desired border color */
+    border-radius: 50px !important;
+    background-color: #F6FAFD !important;
+    color: #475D75; /* Text color */
+    font-size: 15px;
+    line-height: 120%;
+   letter-spacing: -7%;
+    font-family: 'Manrope';
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.modalbody-import{
+    border: 2px dotted #526592 !important;
+    border-radius: 20px !important;
+}
+.btn-circledown{
+    font-family: 'Manrope';
+    cursor: pointer;
+    border: 1px solid rgba(69, 93, 117, 0.4); /* 69, 93, 117 is #475D75 in RGB */
+    color: #526592; /* Text color */
+    border-radius: 50px;
+   font-size: 18px;
+    padding: 10px;
+   
+    line-height: 120%;
+    letter-spacing: -4%;
+}
+
+
+
+
+.btn-color{
+    background-color: #475D75 !important;
+    color: #fcfdfa; /* Text color */
+    font-size: 15px;
+    line-height: 120%;
+   letter-spacing: -7%;
+    font-family: 'Manrope';
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
+
+.list-title{
+   
+    font-size: 14px;
+   align-items: center;
+    gap: 20px;
+}
+.card-body{
+        padding: 0%;
+}
+
+.page-btn:hover {
+    cursor: pointer;
+}
+
+.page-item {
+    background-color: #F6FAFD !important;
+    border: 1px solid #475D75; /* Replace with your desired border color */
+    border-radius: 50px;
+    color: #475D75; /* Text color */
+    font-size: 18px;
+    line-height: 120%;
+    letter-spacing: -7%;
+    font-family: 'Manrope';
+    align-items: center;
+}
+
+.page-link {
+    border-radius: 50px;
+    color: #475D75;
+}
+
+.page-button {
+    background-color: #F6FAFD !important;
+    border: 1px solid #475D75; /* Replace with your desired border color */
+    border-radius: 50px;
+    color: #475D75; /* Text color */
+    font-size: 18px;
+    line-height: 120%;
+    letter-spacing: -7%;
+    font-family: 'Manrope';
+    border-radius: 50px !important;
+}
+
+.reset-button {
+    background-color: #F6FAFD !important;
+    border: 1px solid #475D75; /* Replace with your desired border color */
+    border-radius: 50px;
+    color: #475D75 !important; /* Text color */
+    font-size: 18px;
+    line-height: 120%;
+    letter-spacing: -7%;
+    font-family: 'Manrope';
+}
+
+.page-item:first-child .page-link {
+    margin-left: 0;
+    border-radius: 50px;
+}
+
+.page-item:last-child .page-link {
+    margin-left: 0;
+    border-radius: 50px;
+}
+
+.pagination {
+    gap: 7px;
+}
+
+/* Corrected CSS for active page */
+.page-link.active {
+    background-color: #475D75; /* Change to your desired color */
+    color: #F6FAFD; /* Change to your desired text color */
+}
+
+.page-link.active:hover {
+    background-color: #475D75; /* Change to your desired hover color */
+    color: #F6FAFD; /* Change to your desired hover text color */
+}
+.select-css{
+    color: #8079BD !important;
+    border: 1px solid #8079BD;
+   background-color: #FFFFFF;
+}
+.bg-col-bar{
+    background: linear-gradient(to right, #47756A, #82C4B4);
+
+}
+.bg-col-barmail{
+    background: linear-gradient(to right, #A84343, #DDAEAE);
+
+}
+.label-details{
+    font-size: 16px ;
+    line-height: 120%;
+    letter-spacing: -4%;
+    font-family: 'Manrope' ;
+    color: #2B1F91 ;
+    
+}
+.label-details1{
+    font-size: 16px ;
+    line-height: 120%;
+    letter-spacing: -4%;
+    font-family: 'Manrope' ;
+    color: #399D73 ;
+}
+.text-lebel-categorie{
+    font-size: 20px ;
+    line-height: 120%;
+    letter-spacing: -4%;
+    font-family: 'Manrope' ;
+    color: #C2CBd4 ;
+    cursor: pointer;
+}
+.text-lebel-categorie:hover{
+    color: #475D75 ;
+    cursor: pointer;
+    font-weight: 600 !important;
+}
+.col-size{
+    font-size: 30px ;
+    line-height: 120%;
+    letter-spacing: -4%;
+    font-family: 'Manrope' ;
+    color: #475D75 ;
+}
+.col-size1{
+    font-size: 16px ;
+    line-height: 120%;
+    letter-spacing: -4%;
+    font-family: 'Manrope' ;
+    color: #475D75 ;
+}
+.label-details2{
+    font-size: 16px ;
+    line-height: 120%;
+    letter-spacing: -4%;
+    font-family: 'Manrope' ;
+    color: #A84343 ;
+}
+
+.card-title{
+    font-size: 30px !important;
+    line-height: 120%;
+    letter-spacing: -3%;
+    font-family: 'Manrope' !important;
+    color: #475D75 !important;
+}
+.task-label{
+    font-size: 18px !important;
+    line-height: 120%;
+    letter-spacing: -4%;
+    font-family: 'Manrope' !important;
+    color: #2B1F91 !important;
+}
+.line-bg{
+    color: #475D75;
+    border: 1px solid #475D75;
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+
+}
+.card-subtitle{
+    font-size: 18px !important;
+    line-height: 120%;
+    letter-spacing: -3%;
+    font-family: 'Manrope' !important;
+    color: #8079BD !important;
+}
+
+.d-flex.alignc-items-center.mb-3 {
+    position: relative;
+    left: -100px; /* Vous pouvez ajuster la valeur selon votre besoin */
+  }
+
+
+.navbar-brand {
+    padding: 5px 20px 5px 0px;
+}
+.card {
+    background-color:#FFFFFF;
+    border-radius: 10px;
+    border: 1px solid #2B1F91;
+  }
+
+.card1 {
+    background-color:#2B1F91;
+    border-radius: 10px; 
+  }
+  .card-green{
+    background-color: #D9EEE9;
+    border: 1px solid #399D73;
+  }
+  .card-greenl{
+    background-color: #D9EEE9;
+  }
+  .card-green2{
+    background-color: #FFFFFF;
+    width: 300px; /* Largeur de la carte */
+    height: 280px; /* Hauteur de la carte */
+  
+  }
+  .hr-line{
+    border: 2px solid #D5D2E9 ;/*rgb(148, 33, 33) !important;*/
+    margin-top: 0% !important;
+    margin-bottom: 0%!important;
+  }
+  
+  .card-body {
+    /* Inherited styles from Bootstrap (assuming you're using it) */
+  }
+  
+  .img-fluid {
+    /* Inherited styles from Bootstrap (responsive image sizing) */
+    max-width: 100%; /* Ensure image doesn't overflow card */
+    border-radius: 50%; /* Circular image */
+  }
+  
+ 
+  
+  .client-circledown {
+    /* Assuming this is a custom class for a client name with down arrow */
+    font-size: 14px; /* Adjust font size if needed */
+    color: #333; /* Adjust color if needed */
+  }
+  
+  .card-text {
+    /* Inherited styles from Bootstrap (card text formatting) */
+    font-size: 12px; /* Adjust font size if needed */
+    color: #666; /* Adjust text color if needed */
+    line-height: 1.5; /* Adjust line height for better readability */
+  }
+  
+  .card-text2{
+    color: #2B1F91;
+  }
+  .card-text3{
+    color: #1FA3D4;
+    align-self: flex-end;
+    
+  }
+
+.card-text-t{
+    color: #1FA3D4;
+    
+  }
+
+  .card-text-tache{
+    color: #2B1F91;
+    font-size: 18px; /* Définir la taille du texte */
+
+  }
+
+  
+  .footer-card {
+    /* Assuming this is a custom class for the footer text */
+    font-size: 12px; /* Adjust font size if needed */
+    color: #999; /* Adjust text color if needed */
+    margin-bottom: 0; /* Remove bottom margin for cleaner look */
+  }
+.modal-title{
+    color: #475D75;
+    font-size: 20px;
+    font-weight: 500;
+    line-height:120% ;
+    letter-spacing: -4%;
+
+}
+
+
+
+
+hr{
+ 
+ 
+    border: 2px solid #D5D2E9; /* rgba(69, 93, 117, 0.1) ;*/
+    margin-top: 0% !important;
+    margin-bottom: 0%!important;
+    margin-right: 20px;
+  
+}
+input,select{
+    border-radius: 50px !important;
+    
+  
+    background-color: #e3e8ed;
+}
+
+label{
+    margin-left: 20px;
+    margin-bottom: 10px !important;
+    margin-top: 10px !important;
+}
+.modal-back{
+    padding-top: 0%;
+    padding-bottom: 0%;
+    background-color: #F6FAFD;
+    border-radius: 30px !important;
+}
+.modal-footer{
+    border: 0px !important;
+    padding-top: 0%;
+    padding-bottom: 0%;
+}
+.modal-header{
+    padding-top: 0%;
+    padding-bottom: 1%;
+    border: 0px !important;
+}
+.line-modal{
+    border: 1px solid #475D75;
+}
+.btn-colorbtn{
+    font-size: 14px;
+    font-family: 'Manrope';
+    line-height: 120%;
+    letter-spacing: -3%;
+    background-color: white;
+    border-radius: 30px !important;
+    border: 1px solid #475D75; /* Replace with your desired border color */
+    
+}
+.btn-addcolor{
+    background-color: #475D75;
+    color: #fcfdfa;
+}
+.container-fluid{
+   width: auto;
+}
+.client-circledown{
+    background-color:rgba(69, 93, 117, 0.1);
+    border-radius: 10px;
+    color: #475D75;
+   
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20%;
+    letter-spacing: 0%;
+}
+.header-contact{
+  background-color: #F6FAFD;
+  border-radius: 10px;
+  margin-right: -10px;
+  margin-left: -10px;
+}
+.header-table {
+    background-color: #3457a9 !important;
+    color: #b6da63;
+    font-size: 14px;
+
+}
+.lebel-client {
+    line-height: 120%;
+    letter-spacing: -4%;
+    font-size: 35px;
+  
+    color: #475D75;
+    font-family: 'Manrope';
+
+}
+
+.btn-group{
+    gap: 10px;
+}
+.searchbar {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.search_container {
+    position: relative;
+}
+.rounded-circle{
+    border:2px solid #475D75;
+}
+.footer-card{
+    font-family: 'Manrope';
+    font-size: 12px;
+    letter-spacing: -4%;
+    line-height: 120%;
+    font-weight: 400;
+    color:  rgba(137, 153, 189, 0.6) !important;
+}
+.card-title{
+    font-size: 14px;
+    color: #475D75 !important;
+    line-height: 120%;
+    letter-spacing: -7%;
+    font-family: 'Manrope';
+    font-weight: 400;
+}
+.card-title {
+    line-height: 140%;
+    letter-spacing: 0%;
+    font-family: 'Manrope';
+    font-weight: 400;
+    font-size: 12px;
+    color: #2B1F91 !important;
+    margin-bottom: 5px; /* Add some spacing below the title */
+  }
+.card-text{
+    line-height: 140%;
+    letter-spacing: 0%;
+    font-family: 'Manrope';
+    font-weight: 400;
+    font-size: 18px;
+    color: #399D73 !important;
+    
+    
+}
+.card-text small {
+    font-weight: bold; /* Mettre le texte en gras */
+    font-size: 18px; /* Définir la taille du texte */
+  }
+.card-texts{
+    line-height: 140%;
+    letter-spacing: 0%;
+    font-family: 'Manrope';
+    font-weight: 400;
+    font-size: 18px;
+    color: #2B1F91 !important;
+    font-weight: bold;
+}
+
+.btn-delete{
+    color: rgba(69, 93, 117, 0.2); 
+}
+
+.search_input {
+    border: 1px solid rgba(69, 93, 117, 0.4); /* 69, 93, 117 is #475D75 in RGB */
+    border-radius: 20px  !important;
+    background-color: #F5F5F5;
+    color: #475D75 !important;
+}
+
+
+.footer-card{
+    color: #475D75;
+    font-size :13px;
+}
+
+
+
+.has-search .form-control {
+   padding-left: 2.375rem;
+}
+.large{
+    padding-left:100px;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #526592;
+   
+}
+.dropdown-container{
+  
+}
+
+
+.custom-dropdown-toggle {
+    font-size: 18px; /* Ajustez la taille du texte selon vos besoins */
+    color: #999;
+}
+.custom-dropdown-toggle[aria-expanded="true"] {
+    background-color: #475D75; /* Change to desired color */
+    color: #EAF4FD;
+  }
+
+.custom-dropdown-menu {
+    transform: translate3d(15px, 50px, 15px) !important;
+    line-height: 1.5;
+    font-size: 28px;
+    background-color: #EAF4FD;
+   
+  
+  
+}
+
+.inter-col{
+    background-color: #AABFE4 !important;
+}
+.dropdown-toggle::after{
+    display:none;
+}
+.mr-auto, .mx-auto {
+    margin-right: inherit !important;
+}
+.dropdown-item{
+    font-size: 18px !important;
+    line-height: 120%;
+    letter-spacing: -3%;
+    font-weight: 400;
+    color: #475D75;
+    cursor: pointer;
+    background-color: #EAF4FD;
+}
+label{
+    text-align: center;
+    color: #475D75 !important;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: 'Manrope';
+    margin-bottom: 1px;
+}
+.nav-link {
+    text-align: center;
+    color: #475D75 !important;
+    font-size: 22px;
+    font-weight: 400;
+    font-family: 'Manrope';
+}
+.navbar-nav .dropdown-menu {
+    position: absolute;
+    /* float: none; */
+}
+
+  
+
+  
+
+  
+
+
+  
+
+/*picture photo */
+.profile-pic {
+    color: transparent;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: all 0.3s ease;
+    margin-bottom: 0 !important;
+    margin-left: 0 !important;
+    
+  }
+  .profile-pic input {
+    display: none;
+  }
+  .profile-pic img {
+    position: absolute;
+    object-fit: cover; 
+    width: 80px;
+    height: 80px;
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.35);
+    border-radius: 100px;
+    z-index: 0;
+    margin-bottom: 0 !important;
+    margin-left: 0 !important;
+  
+  }
+  .profile-pic .-label {
+    cursor: pointer;
+    height: 80px;
+    width: 80px;
+  
+  }
+ 
+  .border{
+    border: 1px solid  !important; 
+}
+
+  .profile-pic:hover .-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 10000;
+    color: #fafafa;
+    transition: background-color 0.2s ease-in-out;
+    border-radius: 100px;
+    
+   margin-left: 0%;
+   
+  
+   
+   
+  }
+ 
+  .profile-pic span {
+    color: white;
+    display: inline-flex;
+    padding: -79.8em;
+   /* height: 3.1000000000000014em;*/
+    
+  }
+  .btn-trash{
+    background-color: transparent !important;
+    border: 0px;
+    border-radius: 0px;
+    color: #475D75;
+    position: relative;
+    z-index: 7;
+  }
+  .card-body {
+    cursor: pointer;
+    
+    margin-left: 20px; /* ou toute autre valeur appropriée */
+  }
+  .Name-Button-Import{
+    color: #475D75;
+  }
+ /* your-component.component.css */
+
+.file-upload-container {
+    position: relative;
+    display: inline-block;
+}
+
+.file-input-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: white;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.file-input-label:hover {
+    background-color: #475D75;
+}
+
+.file-input-label:active {
+    background-color: #475D75;
+}
+
+.file-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.Name-Button-Import {
+    margin-left: 10px;
+    /* Add any additional styling for the file name here */
+}
+
+
+
+
+
+.tabs {
+    display: flex;
+  }
+  
+  .tab {
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .tab.active {
+    color: #FFFFFF;
+  }
+  
+  .tab-content {
+    margin-top: 10px;
+  }
+  
+  .tab-pane {
+    display: none;
+  }
+  
+  .tab-pane.active {
+    display: block;
+  }
+  
+
+
+
+  .custom-tab-group {
+    border-bottom: 1px solid #ccc; /* Ajoute une bordure en bas de la barre de navigation */
+  }
+  
+  .custom-card {
+    margin-top: 20px; /* Ajoute un espacement entre chaque carte */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Ajoute une ombre pour une apparence de relief */
+  }
+
+  .text-muted{
+    color:#f50909;
+  }
+
+ .p-dropdown {
+    background-color: #399D73;
+    /* display: inline-flex;
+    cursor: pointer;
+    position: relative;
+    -webkit-user-select: none;
+    user-select: none; */
+ } 

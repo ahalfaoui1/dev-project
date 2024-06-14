@@ -1,0 +1,50 @@
+.btn-colorbtn1{
+    background-color: #F6FAFD;
+    border: 1px solid #526592; /* Optional: Add a border for better visibility */
+    border-radius: 50px !important;
+    color: #475D75;
+}
+input,select{
+    border-radius: 50px !important;
+    
+  
+    background-color: #e3e8ed;
+}
+
+label{
+   
+    margin-bottom: 10px !important;
+    margin-top: 10px !important;
+}
+.btn-circle {
+    border: 1px solid #3457a9; /* Replace with your desired border color */
+    border-radius: 50px !important;
+    background-color: #fcfdfa !important;
+    color: #526592; /* Text color */
+    font-size: 13px;
+    font-weight :400;
+}
+
+.btn-circledown{
+    border: 1px solid #475D75; /* Replace with your desired border color */
+    color: #526592; /* Text color */
+    border-radius: 50px;
+    font-size: 12px !important;
+    font-weight :600;
+}
+
+.btn-color{
+    background-color: #526592 !important;
+    color: #fcfdfa; /* Text color */
+    font-size: 12px !important;
+}
+.btn-colorbtn{
+    background-color: white;
+    border-radius: 30px !important;
+    border: 1px solid #3457a9; /* Replace with your desired border color */
+    
+}
+.btn-addcolor{
+    background-color: #475D75;
+    color: #fcfdfa;
+}

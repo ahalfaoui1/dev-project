@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="d-flex align-items-center btn btn-colorbtn1">
+      <a class="   px-3 py-1" href="#" role="button" >
+        Configuration de E-mail :
+    </a>
+    </div>
+    <form id="contactForm"  enctype="multipart/form-data">
+  
+      <div class="justify-content-center">
+        <div class="col-lg-4 row d-flex justify-content-between">
+          <label for="secteuractivite">Hote :</label>
+          <input [(ngModel)]="formData.hote" type="text" id="hote"  name="hote" class="form-control rounded" placeholder="hote" required />
+        </div>
+        <div class="col-lg-4 row d-flex justify-content-between">
+            <label for="secteuractivite">Port :</label>
+            <input [(ngModel)]="formData.port" type="text" id="port"  name="port" class="form-control rounded" placeholder="port" required />
+          </div>
+          <div class="col-lg-4 row d-flex justify-content-between">
+            <label for="secteuractivite">Addresse e-mail :</label>
+            <input [(ngModel)]="formData.email" type="email" id="email"  name="email" class="form-control rounded" placeholder="email" required />
+          </div>
+        <div class="col-lg-4 row d-flex justify-content-between">
+          <label for="instagram">Mot de passe</label>
+          <input [(ngModel)]="formData.password" type="password" id="password" name="password" class="form-control rounded" placeholder="Mot de passe" required />
+        </div>
+      </div>
+    
+      <div class="d-flex pt-3">
+        <button type="reset" class="btn px-3 mr-2 btn-sm btn-colorbtn">Annuler</button>
+        <button type="submit" class="btn px-3 btn-sm btn-colorbtn btn-addcolor">Enregistre</button>
+      </div>
+    </form>
+    
+        
+  </div>   

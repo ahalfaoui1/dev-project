@@ -271,8 +271,11 @@ public class ContactController {
     
     @GetMapping("/new")
     public List<Contact> getNewContacts() {
-        return contactRepository.findByStatus("new");
+        return contactRepository.findByStatus("New");
     }
     
+    
+    
+  
   
 }

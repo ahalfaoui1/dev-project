@@ -82,13 +82,14 @@ public class TaskService {
 	        tasks.setDateUpdated(new Date());
 	        tasks.setDateDeletedAt(new Date());
 	        tasks.setRminder(new Date());
-	        
+	        tasks.setExpirationdate(task.getExpirationdate());
+	        tasks.setType(task.getType());
+	        tasks.setPriorite(task.getPriorite());
 	        tasks.setQueue(task.getQueue());
-
-
 	        tasks.setTitle(task.getTitle());
-	        
+	        tasks.setRminder(task.getRminder());
 	        tasks.setDescription(task.getDescription());
+	        
 	        tasks.setActivity(activityRepository.findTopByOrderByIdDesc());
 	        return taskRepository.save(tasks);
 	    }

@@ -12,6 +12,10 @@ import org.springframework.web.multipart.MultipartFile;
 import com.crm.backend.models.*;
 
 import com.crm.backend.repository.ContactRepository;
+import java.util.Date;
+import java.util.Calendar;
+
+
 
 
 public interface ContactService {
@@ -49,6 +53,9 @@ public interface ContactService {
     public Integer uploadContact(MultipartFile file) throws IOException;
     
     public  void saveContactToDatabase(MultipartFile file);
+    
+
+
   
 }
 

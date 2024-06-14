@@ -1,0 +1,470 @@
+.container-div{
+    background-color: #475D75 !important;
+    border-radius: 30px;
+}
+.col1{
+    background-color: #475D75;
+    border-radius:  30px  0 0  30px ;
+    max-height: 600px;
+}
+@media (max-width: 768px){
+    .col1 {
+        border-radius:  30px  30px 0  0  ;
+    }
+    .col2 {
+        border-radius: 0 0  30px    30px !important ;
+    }
+}
+
+.col2{
+    background-color: #F6FAFD;
+    border-radius: 0 30px  30px 0;
+     max-height: 600px;
+}
+   /* Add custom styles for the scrollbar */
+   .col1::-webkit-scrollbar {
+    width: 5px;
+  
+}
+
+.col1::-webkit-scrollbar-thumb {
+    background-color: #475D75; /* Set the color of the scrollbar thumb */
+    
+}
+
+.col1::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Set the color of the scrollbar track */
+}
+   /* Add custom styles for the scrollbar */
+   .col2::-webkit-scrollbar {
+    width: 5px;
+  
+}
+
+.col2::-webkit-scrollbar-thumb {
+    background-color: #475D75; /* Set the color of the scrollbar thumb */
+    border-radius: 5px;
+}
+
+.col2::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Set the color of the scrollbar track */
+}
+.modal-back{
+    background-color: #FFFFFF;
+    border-radius: 30px !important;
+    position: fixed; /* Pour positionner le modal par rapport à la fenêtre du navigateur */
+    top: 50%; /* Pour aligner le modal en haut de la fenêtre */
+    left: 50%; /* Pour aligner le modal à gauche de la fenêtre */
+    width: 850px; /* Largeur du modal */
+    height: 553px; /* Hauteur du modal */
+    transform: translate(-50%, -50%); 
+}
+.modal-body{
+    background-color: #EAE9F4; /*E5EAF0*/
+    border-radius: 25px !important;
+    width: 770px; /* Largeur du textarea */
+    height: 330px; /* Hauteur du textarea */
+    position: absolute; /* Pour positionner le modal-body par rapport au modal */
+    top: 50%; /* Pour aligner le modal-body en haut du modal */
+    left: 50%; /* Pour aligner le modal-body à gauche du modal */
+    transform: translate(-50%, -50%); /* Pour centrer le modal-body */
+}
+textarea{
+    background-color: transparent !important;
+    border: 0px !important;
+    
+}
+ .barrejoint button{
+    font-size: 13px !important; 
+}
+.barrejoint{
+   
+    padding: 3px 3px 3px 3px;
+    border-radius: 50px;
+    background-color: white;
+}
+.btn-colorcontact{
+    background-color: transparent;
+    border: 1px solid black; /* Optional: Add a border for better visibility */
+    border-radius: 50px !important;
+}
+
+.btn-ccolorbtn{
+    background-color: #2B1F91;
+    bottom: 100px;
+}
+
+
+.line-notes{
+    padding: 0px !important;
+    margin: 5px !important;
+}
+.btn-color{
+    background-color: white;
+    border-radius: 10px 10px 10px 10px !important;
+}
+.btn-colorbtn2{
+    background-color: #2B1F91;
+   
+    border-radius:  50px;
+    line-height: 120%;
+    letter-spacing: -4%;
+    font-size: 12px;
+  
+    color: #F5F5F5;
+    font-family: 'Manrope';
+    
+
+    position: absolute; /* Position absolue par rapport à son conteneur parent */
+    bottom: 30px; /* Positione le bouton à 20 pixels du bas */
+    left: 50%; /* Centre le bouton horizontalement */
+    transform: translateX(-50%); /* Centre le bouton horizontalement */
+
+}
+.btn-colorbtn22{
+    background-color: #2B1F91;
+   
+    border-radius:  50px;
+    line-height: 120%;
+    letter-spacing: -4%;
+    font-size: 12px;
+  
+    color: #F5F5F5;
+    font-family: 'Manrope';
+
+}
+.btn-comment-add{
+    background-color: #2B1F91;
+   
+    border-radius:  50px;
+    line-height: 120%;
+    letter-spacing: -4%;
+    font-size: 14px;
+  
+    color: #F5F5F5;
+    font-family: 'Manrope';
+    
+
+}
+.btn-colorbtn4{
+    background-color: #475D75;
+    opacity: 0.8;
+   
+    border-radius:  50px;
+    line-height: 120%;
+    letter-spacing: -4%;
+    font-size: 14px;
+  
+    color: #F5F5F5;
+    font-family: 'Manrope';
+
+}
+   
+    
+.modal-title{
+    font-size: 18px;
+    color: #2B1F91;
+    line-height: 120%;
+    letter-spacing: -3%;
+    font-family: 'Manrope';
+    font-weight: bold;
+    margin-bottom: 30px; /* Espace en bas entre le titre et le hr */
+
+}
+   
+.date-note{
+    
+    border-radius:  50px;
+    line-height: 120%;
+    letter-spacing: -6%;
+    font-size: 14px;
+    align-items:center;
+    color: #2B1F91;
+    font-family: 'Manrope';
+   
+}
+.modal-footer{
+    border: 0px !important;
+}
+.modal-header{
+    border: 0px !important;
+    padding-bottom: 0px !important;
+}
+.modal-hheader{
+    padding-top: 0%;
+    padding-bottom: 1%;
+    border: 0px !important;
+}
+hr{
+    border: 1px solid #a9b4ce; /* Optional: Add a border for better visibility */
+    
+}
+.col-back{
+    
+    background-color: #EAE9F4;
+    border-radius:  20px !important;
+}
+#emailContent {
+    min-height: 6em; /* Adjust the height as needed */
+    border: 1px solid #526592; /* Optional: Add a border for better visibility */
+    padding: 10px; /* Optional: Add padding for better appearance */
+   
+}
+.btn-colorbtn{
+    background-color: white;
+    border-radius: 50px !important;
+    border: 1px solid #526592; /* Optional: Add a border for better visibility */
+}
+
+.btn-dcolorbtn{
+    background-color: #2B1F91;
+    border-radius: 50px !important;
+    border: 1px solid #526592; 
+    color: #FFFFFF;
+}
+.ss{
+    color: #2B1F91;
+    font-weight: bold;
+}
+
+.btn-bcolorbtn{
+    background-color: #FFFFFF;
+    border-radius: 50px !important;
+    border: 1px solid #2B1F91; 
+    color: #2B1F91;
+}
+
+
+.btn-colorbtn3{
+    background-color: white;
+    border-radius: 50px !important;
+    border: 0px solid #FFFFFF; /* Optional: Add a border for better visibility */
+    font-size: 10px;
+    line-height: 140%;
+    letter-spacing: -4%;
+    color:#2B1F91;
+}
+.inter-col{
+    background-color: #AABFE4;
+}
+
+.btn-colorbtn1{
+    background-color: transparent;
+    border: 1px solid #526592; /* Optional: Add a border for better visibility */
+    border-radius: 50px !important;
+}
+
+
+.btn-square {
+    width: 80px; /* Set the width to your desired size */
+    height: 80px; /* Set the height to your desired size */
+}
+.btn-groupe{
+    gap: 10px;
+}
+
+.block-icon {
+    display: block;
+    color: black; 
+  }
+.d-flex p {
+    text-align: left; /* Align all paragraphs to the left */
+  }
+
+p{
+    color: white; 
+    font: 100;
+   
+}
+.lebel-details{
+    font-size: 20px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.fa-solid{
+    color: white !important;
+}
+
+.btn-circle {
+    border: 1px solid #AABFE4; /* Replace with your desired border color */
+    border-radius: 50px;
+    padding: 0px 20px 0px 20px ;
+    background-color: #526592 !important;
+    color: #AABFE4; /* Text color */
+    height: 40px;
+}
+.list-title{
+    font-size: 14px;
+   align-items: center;
+    gap: 20px;
+}
+.page-btn {
+    background-color: #526592 !important;
+    border: 1px solid #b6da63; /* Replace with your desired border color */
+    border-radius: 12px;
+    color: #b6da63; /* Text color */
+    padding: 8px 10px;
+}
+.page-item:first-child .page-link {
+    padding: 8px 10px;
+     margin-left: 0; 
+     border-top-left-radius: 1.7rem; 
+     border-bottom-left-radius: 1.7rem; 
+     border-top-right-radius: 1.7rem; 
+     border-bottom-right-radius: 1.7rem; 
+}
+.page-item:last-child .page-link {
+    padding: 8px 10px;
+    margin-left: 0; 
+    border-top-right-radius: 1.7rem; 
+    border-bottom-right-radius: 1.7rem; 
+    border-top-left-radius: 1.7rem; 
+    border-bottom-left-radius: 1.7rem; 
+}
+
+.pagination {
+    gap: 10px;
+    height: 40px;
+}
+
+.navbar-brand {
+    padding: 5px 20px 5px 0px;
+}
+
+.header-table {
+    background-color: #3457a9 !important;
+    color: #b6da63;
+    font-size: 14px;
+
+}
+
+.lebel-client {
+    font-size: 40px;
+    color: #b6da63;
+    font-family:  Arial, sans-serif;
+
+}
+.title-link{
+    color: white;
+}
+.btn-group{
+    gap: 10px;
+}
+.searchbar {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.search_container {
+    position: relative;
+}
+
+.search_input {
+    height: 40px;
+    border: 2px solid #ccc !important;
+    border-radius: 20px 20px 20px 20px !important;
+    background-color: #526592;
+    color: #fcfdfa !important;
+    padding-left: 40px; /* Ensure space for the icon */
+}
+
+.search_input:focus + .search_icon {
+    color: #fcfdfa !important;
+    background-color: #526592 !important;
+}
+
+.fa-search:after,
+.fa-search:before {
+    color: white !important;
+    z-index: 7 !important;
+}
+
+.search_icon {
+    position: absolute;
+    top: 50%;
+    color: transparent !important;
+    background-color: transparent !important;
+    border: 0px;
+    left: 5px;
+    transform: translateY(-50%);
+    height: 20px;
+    width: 20px;
+}
+
+
+/* ici */
+thead{
+    border-left: 1px solid #475D75;
+    border-right: 1px solid #475D75;
+    border-top: 1px solid #475D75;
+    border-bottom: 1px solid #475D75 !important;
+    background-color: #a7b7c3;
+}
+.table{
+    border-left: 1px solid #475D75;
+    border-right: 1px solid #475D75;
+    border-top: 1px solid #475D75;
+    border-bottom: 1px solid #475D75 !important;
+    color: #475D75;
+    font-size: 14px;
+}
+tbody{
+    border-left: 1px solid #475D75;
+    border-right: 1px solid #475D75;
+    border-top: 1px solid #475D75;
+    border-bottom: 1px solid #475D75 !important;
+    background-color: #dae0e7;
+}
+th{
+    border-left: 1px solid #475D75;
+    border-right: 1px solid #475D75;
+    border-top: 1px solid #475D75;
+    border-bottom: 1px solid #475D75 !important;
+    background-color: #F6FAFD;
+}
+td{
+    border-left: 1px solid #475D75;
+    border-right: 1px solid #475D75;
+    border-top: 1px solid #475D75;
+    border-bottom: 1px solid #475D75 !important;
+}
+hr{
+    color: #3457a9;
+    border-radius: 2px;
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+.form-control{
+    color:#2B1F91;
+   
+    top: 50%;
+    
+    margin-bottom: 100px; /* Marge en bas */
+}
+
+/* .modalbody-import{
+    border: 2px dotted #526592 !important;
+    border-radius: 20px !important;
+} */
+
+
+/* Style pour le fond de la modal */
+/* .modal-bback {
+    background-color: rgba(0, 0, 0, 0.5); 
+} */
+/* .modal-bbody{
+    background-color: #FFFFFF;
+    width: 468px; 
+    height: 100px; 
+  } */
+
+/* Style pour le titre de la modal */
+.modal-ttitle {
+    color: #ffffff; 
+}
+
+/* Style pour la boîte modale */
+/* .modal-ddialog {
+    width: 400px; 
+    height: 200px; 
+} */
+

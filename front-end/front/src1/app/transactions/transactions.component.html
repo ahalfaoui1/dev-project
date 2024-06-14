@@ -1,0 +1,307 @@
+<div class="container-fluid  mt-4 mr-3 ml-3">
+    <div class="header-contact  mt-4  py-1 ">
+       
+            <div class="  d-flex   align-items-center px-4  py-2  justify-content-between  ">
+                <div class="   align-items-center "> <p class="lebel-client ">Transactions</p> </div>
+                <div class=" btn-groupe row  ">
+                    <div class="">
+                      <!--   <button class="btn btn-circle  py-2 mr-2" (click)="openModalimport(importContact)"><i class="fa-solid fa-file-import"></i> Import</button>
+                           Modal -->
+              <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="composeEmailModalLabel" aria-hidden="true">
+                <div class="modal-dialog  modal-dialog-centered " role="document">
+                    <div class="modal-content  modal-back  " style="width: 300% !important;">
+                     
+                            <ng-template #importContact>
+                                <div class="modalbody-import">
+                                <div class="modal-header mb-1 ">
+                                    <h5 class="modal-title  " id="composeEmailModalLabel"></h5>
+                                    <button type="button" class="close" (click)="closeModal()">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  
+                                </div>
+                            
+                                <div class="modal-body px-0 py-0">
+                                    <form id="contactForm" (ngSubmit)="submitImportcontactForm()" enctype="multipart/form-data">
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <div class="file-upload-container">
+                                                <label for="file" class="file-input-label">
+                                                    <img src="./assets/csv.png" id="photo" width="50" height="50" alt="Placeholder image">
+                                                    <span *ngIf="selectedFileName" class="Name-Button-Import">{{ selectedFileName }}</span>
+                                                </label>
+                                                <input class="form-control file-input" id="file" name="file" type="file" (change)="onFilecontactChange($event)" required>
+                                            </div>
+                                        </div>
+                                
+                                        <div class="modal-footer d-flex justify-content-center">
+                                            <button type="reset" class="btn btn-circle py-2 mr-2" (click)="closeModal()">Annuler</button>
+                                            <button type="submit" class="btn btn-circle py-2 btn-color">import Contact</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                
+                            </div>
+                            </ng-template>
+                        
+
+                        
+                    </div>
+                </div>
+            </div>
+                     
+                       <!--   <button class="btn  btn-circle  py-2  btn-color" (click)="openModal(addContact)">
+                            <i class="fa-solid fa-user-plus"></i> Ajouter Contact
+                        </button>
+                        Modal -->
+              <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="composeEmailModalLabel" aria-hidden="true">
+                <div class="modal-dialog " role="document">
+                    <div class="modal-content  modal-back  ">
+                        <ng-template #addContact>
+                        <div class="modal-header mb-1 ">
+                            <h5 class="modal-title  " id="composeEmailModalLabel">Ajouter Contact</h5>
+                            <button type="button" class="close" (click)="closeModal()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                          
+                        </div>
+                        <hr class="line-modal">
+                        <div class="modal-body px-0 py-0">
+                            
+                            <form id="contactForm" (ngSubmit)="submitcontactForm()" enctype="multipart/form-data">
+                              
+                                <div class="row ">
+
+                                    <div class="col-lg-4 align-items-center ">
+                                        <div class="profile-pic border mt-4 " >
+                                            <label class="-label" for="photo">
+                                            <span class="glyphicon glyphicon-camera "></span>
+                                            <span><i class="fa-solid fa-camera "></i></span> 
+                                            </label>
+                                             <input class="form-control"  id="photo" name="photo" type="file" accept="image/*" (change)="onFileChange($event)" required />
+                                             <img *ngIf="photo==''" src="https://www.shutterstock.com/image-vector/user-profile-icon-vector-avatar-600nw-2247726673.jpg" id="photo" width="50" height="50"  alt="Placeholder image">
+                                             <img *ngIf="photo" [src]="photo"  width="50" height="50" alt="Placeholder image">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+
+                                    <label for="email">Email</label>
+                                    <input [(ngModel)]="formData.email" type="email" id="email" name="email" class="form-control rounded" placeholder="contact@exemple.fr" required />
+                            
+                                    <label for="nomentreprise">Nom d'entreprise</label>
+                                    <input [(ngModel)]="formData.nomentreprise" type="nomentreprise" id="nomentreprise" name="nomentreprise" class="form-control rounded" placeholder="TF1" required />
+                            
+                                 
+                                    </div>
+                                    <div class="col-lg-4">
+                                    <label for="statusContact">Type Contact</label>
+                                    <select [(ngModel)]="formData.typecontact" id="typecontact" name="typecontact" class="form-select form-control rounded" required>
+                                      <option value="Client" selected>Client</option>
+                                      <option value="Entreprise">Entreprise</option>
+                                     
+                                    </select>
+                                    
+                                    <label for="linkedin">Linkedin</label>
+                                    <input [(ngModel)]="formData.linkedin" type="text" id="linkedin" name="linkedin" class="form-control rounded" placeholder="Linkedin" required />
+                          
+                                    </div>
+
+                                </div>
+                                <div class="row pb-4">
+                                    
+                                    <div class="col-lg-4  ">
+                                      
+                                       
+                                        <div class="">
+                                            <label for="prenom">Prénom :</label>
+                                            <input [(ngModel)]="formData.prenom" type="text" id="prenom" name="prenom" class="form-control rounded" placeholder="prenom" required />
+                                            <label for="nom">Nom</label>
+                                            <input [(ngModel)]="formData.nom" type="text" id="nom" name="nom" class="form-control rounded" placeholder="nom" required />
+                                    
+                                        </div>
+                                      
+                                    </div>
+                                    <div class="col-lg-4">
+                                     
+                                
+                                    <label for="intitulePoste">Intitulé du poste</label>
+                                    <input [(ngModel)]="formData.intitulePoste" type="text" id="intitulePoste" name="intitulePoste" class="form-control rounded" placeholder="Intitulé du poste" required />
+                                   
+                                    <label for="phaseCycleVie">Phase de cycle de vie</label>
+                                    <select [(ngModel)]="formData.phaseCycleVie" id="phaseCycleVie" name="phaseCycleVie" class="form-select form-control rounded" required>
+                                        
+                                      <option value="Contact" selected>Contact</option>
+                                      <option value="NON Contact">Non Contact</option>
+                                    </select>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        
+                              
+                            
+                                 
+                            
+                                        <label for="statusContact">Status de Contact</label>
+                                        <select [(ngModel)]="formData.statuscontact" id="statuscontact" name="statuscontact" class=" form-select " required>
+                                        
+                                          <option value="New">New</option>
+                                          <option value="Connected">Connected</option>
+                                          <option value="Open">Open</option>
+                                        </select>
+                                    
+                                    <label for="linkedin">Linkedin</label>
+                                    <input [(ngModel)]="formData.linkedin" type="text" id="linkedin" name="linkedin" class="form-control rounded" placeholder="Linkedin" required />
+                          
+                                    </div>
+
+                                </div>
+
+                                
+                               
+                              
+                                <div class="modal-footer d-flex justify-content-center  ">
+                                  <button type="reset" class="btn btn-circle  py-2 mr-2" (click)="closeModal()" >Annuler</button>
+                                  <button type="submit" class="btn  btn-circle  py-2  btn-color">Ajouter Contact</button>
+                                </div>
+                              </form>
+                              
+                              
+                        </div>
+                    </ng-template>
+                    </div>
+                </div>
+            </div>
+                    </div>
+                      
+             
+            
+              
+                </div>
+            </div>
+          
+            <div class="container-fluid px-0 ">
+                <div class="d-flex px-4   mb-3  ">
+                  <div class="col w-25  ">
+                    <div class="btn-group show">
+                        <a class="btn btn-sm btn-circle  dropdown-toggle custom-dropdown-toggle" role="button" >
+                          &nbsp; Récapitulatif  &nbsp;
+                        </a>
+                      
+                      </div>
+                  </div>
+                  <div class="col   w-25 ">
+                    <div class="btn-group ">
+                        <a class="btn btn-sm btn-circle  dropdown-toggle custom-dropdown-toggle" role="button" >    
+                                                  &nbsp; Contacts  &nbsp;
+                        </a>
+                    
+                      </div>
+                  </div>
+                  <div class="col   w-25 ">
+                    <div class="btn-group ">
+                    <a class="btn btn-sm btn-circle  dropdown-toggle custom-dropdown-toggle" role="button" >      
+                        &nbsp;  Planifier  &nbsp;
+                        </a>
+                   
+                      </div>
+                  </div>
+
+                  <div class="col  w-25">
+                    <div class="btn-group ">
+ <a class="btn btn-sm btn-circle  dropdown-toggle custom-dropdown-toggle" role="button" >     
+                         &nbsp; Flux  &nbsp;
+                      </a>
+                   
+                      </div>
+                  </div>
+                  <div class="col   px-0  w-100 ">
+                  <!-- <div class="btn-group ">
+                        <div class=" has-search  w-100">
+                          <span class="fa fa-search form-control-feedback "></span>
+                          <input type="text" class=" form-control search_input btn-circledown dropdown-toggle custom-dropdown-toggle" id="search" name="search" (input)="onSearch($event)" placeholder="recherche de Contact">
+                        </div>
+                      </div>-->
+                  </div>
+                </div>
+              </div>
+
+            </div>
+<br>
+
+<div class=" px-2">
+  <div class="row justify-content-between ">
+    <div class="col-lg-2 pl-0">
+      <div class="card ">
+      <div class=" px-3 mb-4">
+        <p>
+          Toutes Transactions <i class="fa-sharp fa-solid fa-chevron-down"></i> &nbsp;
+        </p>
+        <p>Berneso</p>
+        <hr>
+        <p>
+          Pipeline <i class="fa-sharp fa-solid fa-chevron-down"></i> &nbsp;
+        </p>
+        <p>Berneso</p>
+        <p>
+          Filter <i class="fa-sharp fa-solid fa-chevron-down"></i> &nbsp;
+        </p>
+        <p>Berneso</p>
+        <hr>
+        <br>
+      </div>
+    
+    
+      </div>
+      <div class="card mt-4">
+        <div class=" px-3 pt-3">
+          <div class="d-flex">
+            <p>Planifier &nbsp;</p>
+            <p>&nbsp; flux</p>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+    <div class="col-lg-10 pr-0  ">
+ 
+      
+        <div class="board">
+      
+         <!--<div class="board-bar">
+            <p class="board-name">{{ board.name }}</p>
+          </div>-->
+      
+          <div class="board-wrapper">
+      
+            <div class="board-columns" cdkDropListGroup>
+              <div class="board-column" *ngFor="let column of board.columns">
+      
+                <div class="column-title">
+                  {{ column.name }}
+                </div>
+      
+                <div class="tasks-container"
+                cdkDropList
+                [cdkDropListData]="column.tasks"
+                (cdkDropListDropped)="drop($event)">
+                  <div class="task" *ngFor="let item of column.tasks" cdkDrag>
+                    {{ item }}
+                  </div>
+                </div>
+              </div>
+      
+            </div>
+      
+          </div>
+      
+        </div>
+      
+  
+ 
+    </div>
+  </div>
+
+
+</div>
+
+
+
+

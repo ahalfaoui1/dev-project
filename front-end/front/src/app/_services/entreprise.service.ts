@@ -180,6 +180,65 @@ selectedFileName: string = '';
   }
 
 
+  countAfaireTermine(idContact:number){
+    const url = `${this.API_URLTasks}/search/countTasksByContactIdAndEqualCurrentDateAndTypeIsToDoAndQueue?contactId=${idContact}&currentDate=${this.formattedDate}`;
+       return this.http.get(url, httpOptions);
+
+  }
+
+  countAfaireBeforeTermine(idContact:number){
+    const url = `${this.API_URLTasks}/search/countTasksByContactIdTypeIsToDoAndQueueBEFORE?contactId=${idContact}&currentDate=${this.formattedDate}`;
+       return this.http.get(url, httpOptions);
+
+  }
+
+  countAfaireAFTERTermine(idContact:number){
+    const url = `${this.API_URLTasks}/search/countTasksTypeIsToDoAndQueueAfter?contactId=${idContact}&currentDate=${this.formattedDate}`;
+       return this.http.get(url, httpOptions);
+
+  }
+
+  countEmailTermine(idContact:number){
+    const url = `${this.API_URLTasks}/search/countTasksByContactIdTypeIsToDoANDmailTerminer?contactId=${idContact}&currentDate=${this.formattedDate}`;
+       return this.http.get(url, httpOptions);
+
+  }
+
+  countEmailTermineBEFORE(idContact:number){
+    const url = `${this.API_URLTasks}/search/countTasksByContactIdTypeIsToDoANDmailTerminerBEFORE?contactId=${idContact}&currentDate=${this.formattedDate}`;
+       return this.http.get(url, httpOptions);
+
+  }
+
+  countEmailTermineAFTER(idContact:number){
+    const url = `${this.API_URLTasks}/search/countTasksmailTerminerBEFORE?contactId=${idContact}&currentDate=${this.formattedDate}`;
+       return this.http.get(url, httpOptions);
+
+  }
+
+  
+
+  countAppelTermine(idContact:number){
+    const url = `${this.API_URLTasks}/search/countTasksByContactIdTypeIsToDoANDAPPELTerminer?contactId=${idContact}&currentDate=${this.formattedDate}`;
+       return this.http.get(url, httpOptions);
+
+  }
+
+  countAppelTermineBEFORE(idContact:number){
+    const url = `${this.API_URLTasks}/search/countTasksByContactIdTypeIsToDoANDAPPELTerminerBEFORE?contactId=${idContact}&currentDate=${this.formattedDate}`;
+       return this.http.get(url, httpOptions);
+
+  }
+
+
+  countAppelTermineAFTER(idContact:number){
+    const url = `${this.API_URLTasks}/search/countTasksAPPELTerminerAFTER?contactId=${idContact}&currentDate=${this.formattedDate}`;
+       return this.http.get(url, httpOptions);
+
+  }
+
+
+
 
 
   getTasksEntreprise2(page: number,id: number): Observable<any> {

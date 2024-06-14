@@ -1,0 +1,156 @@
+
+@if (currentUser) {
+  <div class="container-fluid pt-4 mb-4 ">
+
+  <div class="d-flex justify-content-between">
+      <button class="btn btn-colorcontact" routerLink="/home" ><i class="fa-solid fa-angle-left" style="color: black !important;"></i> Tableau de bord</button>
+
+     <!-- <div class="d-flex justify-content-end">
+          <div class="input-group search_container">
+              <input class="form-control search_input" type="text" name="" placeholder="Search...">
+              <div class="input-group-append">
+                  <span class="input-group-text search_icon"><i class="fas fa-search"></i></span>
+              </div>
+          </div>
+      </div>-->
+  </div>
+
+  <br><br>
+
+  <div class="container-fluid"  *ngIf="user">
+    <div class="row">
+
+        <div class="col-lg-3 col1 pt-4"  style="overflow-y: auto; overflow-x: 0;">
+            
+            
+            <div   class=" row d-flex">
+                <div class="col-lg-4  px-0 py-0 profile-pic border">
+                    <label class="-label" for="image">
+                      <span class="glyphicon glyphicon-camera"></span>
+                      <span><i class="fa-solid fa-camera"></i></span>
+                    </label>
+                  
+                    <input id="image" name="image" type="file" accept="image/*" (change)="onFileChange($event)" required />
+                  
+                    <img *ngIf="user.image !== null" [src]="'data:image/*;base64,' + user.image"
+                         alt="User Image" class="card-img-top img-fluid rounded-circle"
+                         style="object-fit: initial; object-position: center center; width: 80px; height: 80px;">
+                  
+                    <img *ngIf="user.image == null"
+                         src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAxL3JtNjA5LXNvbGlkaWNvbi13LTAwMi1wLnBuZw.png"
+                         alt="User Image" class="card-img-top img-fluid rounded-circle"
+                         style="object-fit: initial; object-position: center center; width: 80px; height: 80px;">
+                  </div>
+                    <div class="col-lg-8 align-items-center justify-content-start">
+                        <p>{{ user.firstname }} {{ user.lastname }}</p>
+                        <p>{{ user.role.name }} </p>
+                    </div>
+                    
+                </div>
+    <br>
+
+            <div class="d-flex align-items-center btn  btn-colorbtn1 color-lock">
+              <a class="   color-lock  px-0 py-1" href="#" role="button" >
+                <i class="fa-solid fa-user color-lock"></i> &nbsp;&nbsp;  Information Utilisateur
+            </a>
+            </div>
+          
+            
+
+            <br>
+            <div class="px-0">
+
+
+                
+                <div class=" row d-flex  align-items-center ">
+                    <div class="col-lg-4">
+                        <p class="text-truncate">Profile :</p>
+                    </div>
+                    <div class="col-lg-6 text-right">
+                        <p>{{ user.username }}</p>
+                    </div>
+                </div>
+                <div class="  row d-flex   ">
+                  <div class="col-lg-4">
+                      <p class="text-truncate">Nom :</p>
+                  </div>
+                  <div class="col-lg-8 text-right">
+                      <p>{{ user.firstname }}</p>
+                  </div>
+              </div>
+              <div class=" row d-flex   ">
+                <div class="col-lg-4">
+                    <p class="text-truncate">Prenom :</p>
+                </div>
+                <div class="col-lg-8 text-right">
+                    <p>{{ user.lastname }}</p>
+                </div>
+            </div>
+                <div class=" row d-flex   ">
+                  <div class="col-md-4">
+                      <p class="text-truncate">Email:</p>
+                  </div>
+                  <div class="col-md-8 text-right">
+                    <p>{{ user.email }}</p>
+                  </div>
+              </div>
+            
+                <div class=" row d-flex   ">
+                    <div class="col-md-4">
+                        <p class="text-truncate">Role :</p>
+                    </div>
+                    <div class="col-md-8 text-right">
+                        <p>{{ user.role.name }}</p>
+                    </div>
+                </div>
+
+                
+                <div class=" row d-flex   ">
+                  <div class="col-md-4">
+                      <p class="text-truncate">Change  :</p>
+                  </div>
+                  <div class="col-md-8 text-right">
+                      <p>{{ user.role.name }}</p>
+                  </div>
+              </div>
+               <div class="d-flex btn btn-colorbtn1 color-lock mb-3">
+                 <a class="  color-lock  px-0 py-1"  role="button"   (click)="showComponent('change-password')" >
+                    <i class="fa-solid fa-lock color-lock "></i>&nbsp;&nbsp;   Change mot de passe
+                </a>
+                </div>
+                <div class="d-flex btn btn-colorbtn1 color-lock mb-3">
+                    <a class="  color-lock  px-0 py-1" role="button"  (click)="showComponent('settings')" >
+                       <i class="fa-solid fa-lock color-lock "></i>&nbsp;&nbsp; Parammetre Email
+                   </a>
+                   </div>
+             
+                
+               
+            </div>
+         
+        </div>
+
+        <div class="col-lg-9 col2 pt-4 " style="overflow-y: auto;">
+         
+            <div *ngIf="selectedComponent === 'change-password'">
+                <app-change-password></app-change-password>
+                
+            </div>
+            
+            <div *ngIf="selectedComponent === 'settings'">
+                <app-settings></app-settings>
+            </div>
+          
+    
+            
+
+        </div>
+
+    </div>
+</div>
+
+</div>
+} @else {
+  <p>Please login.</p>
+  }
+  

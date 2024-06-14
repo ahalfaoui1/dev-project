@@ -1,0 +1,142 @@
+<hr>
+<div class="d-flex justify-content-between px-2">
+    
+    <!-- <p class="date-note"><strong>24 janvier</strong></p> -->
+  
+    <!-- <button class="btn btn-sm px-sm-4 btn-colorbtn2" data-toggle="modal" data-target="#noteModal">Ajouter Activite</button> -->
+   
+    <div class="modal fade " id="noteModal" tabindex="-1" role="dialog" aria-labelledby="noteModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="modal-content modal-back px-4">
+        <div class="modal-header">
+            <h5 class="modal-title" id="composeEmailModalLabel">Ajouter Notes</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body mt-4 ">
+            <!-- Your email composition form can go here -->
+           
+            <div class="form-group ">
+              
+                <textarea contenteditable="true" class="form-control" id="emailContent" rows="3">Tapez Votre Commentaire</textarea>
+                <div id="emailToolbar" class="barrejoint mt-3">
+                    <button type="button" class="btn" onclick="document.execCommand('bold', false, null)"><strong>B</strong></button>
+                    <button type="button" class="btn" onclick="document.execCommand('italic', false, null)"><em>I</em></button>
+                    <button type="button" class="btn barrejoin" onclick="document.execCommand('underline', false, null)"><u>U</u></button>
+                    
+                    <!-- New buttons for Joint File and Joint Photo -->
+                    <button type="button" class="btn" onclick="attachFile()"><i class="fa-regular fa-file"></i></button>
+                    <button type="button" class="btn" onclick="attachPhoto()"><i class="fa-regular fa-image"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer text-center">
+            <button type="button" class="btn px-3  btn-sm btn-colorbtn2 text-center mx-auto">Ajouter note</button>
+        </div>
+        
+        </div>
+        </div>
+        </div>
+</div>
+
+
+
+<div class="col-back m-2">
+    <div class="px-4">
+        <div class="d-flex justify-content-between align-items-center pt-4 ">
+            <p class="date-note">Votre premier Commentaire <a href="" style="color: #45C0EE;">Berneso groupe</a></p>
+          
+        </div>
+       
+      
+    </div>
+</div>
+
+<!--<div class=" d-flex ml-2 ">
+    <button class="btn btn-sm btn-colorbtn2 px-sm-4 mr-2" >Activite</button>
+    <button class="btn btn-sm btn-colorbtn px-sm-4 mr-2" >Notes</button>
+   
+
+  
+<button class="btn btn-colorbtn btn-sm px-sm-4 mr-2" >
+Email
+</button>
+
+
+    <button class="btn btn-sm btn-colorbtn px-sm-4"  data-toggle="modal" data-target="#tacheModal">Tache</button>
+    <div class="modal fade " id="tacheModal" tabindex="-1" role="dialog" aria-labelledby="composeEmailModalLabel" aria-hidden="true">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content modal-back">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="composeEmailModalLabel">Ajouter Tache</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                
+                    <div class="row d-flex justify-content-between px-3">
+                        <a class="btn btn-colorbtn1 dropdown-toggle custom-dropdown-toggle " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dates
+                        </a>
+                        <div class="dropdown-menu custom-dropdown-menu align-items-center">
+                        
+                            <a class="dropdown-item" href="#">Défaut </a>
+                            <a class="dropdown-item inter-col" href="#">nouveaux</a>
+                            <a class="dropdown-item" href="#"> anciens </a>
+                        </div>
+
+                        <a class="btn btn-colorbtn1 dropdown-toggle custom-dropdown-toggle  " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Satuts
+                        </a>
+                        <div class="dropdown-menu custom-dropdown-menu align-items-center">
+                          
+                            <a class="dropdown-item" href="#">Défaut </a>
+                            <a class="dropdown-item inter-col" href="#">active</a>
+                            <a class="dropdown-item" href="#"> deactive </a>
+                        </div>
+
+                        <a class="btn btn-colorbtn1 dropdown-toggle custom-dropdown-toggle " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Tache
+                        </a>
+                        <div class="dropdown-menu custom-dropdown-menu align-items-center">
+                          
+                            <a class="dropdown-item" href="#">Défaut </a>
+                            <a class="dropdown-item inter-col" href="#">active</a>
+                            <a class="dropdown-item" href="#"> deactive </a>
+                        </div>
+                        <a class="btn btn-colorbtn1 dropdown-toggle custom-dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Note
+                        </a>
+                        <div class="dropdown-menu custom-dropdown-menu align-items-center">
+                         
+                            <a class="dropdown-item" href="#">Défaut </a>
+                            <a class="dropdown-item inter-col" href="#">active</a>
+                            <a class="dropdown-item" href="#"> deactive </a>
+                        </div>
+                   
+                    </div>
+                    <div class="form-group">
+                        <label for="emailContent">Compose your email:</label>
+                        <div contenteditable="true" class="form-control" id="emailContent" rows="5"></div>
+    
+                        <div id="emailToolbar">
+                            <button type="button" class="btn btn-secondary" onclick="document.execCommand('bold', false, null)"><strong>B</strong></button>
+                            <button type="button" class="btn btn-secondary" onclick="document.execCommand('italic', false, null)"><em>I</em></button>
+                            <button type="button" class="btn btn-secondary" onclick="document.execCommand('underline', false, null)"><u>U</u></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn  btn-colorbtn " data-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn  btn-colorbtn ">Envoyer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-sm px-sm-4 btn-colorbtn ml-2">réunion</button>
+</div>-->
+
+
+
